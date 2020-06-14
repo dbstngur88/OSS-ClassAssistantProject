@@ -32,7 +32,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     Spinner spinner;
 
-    FirebaseAuth firebaseAuth;
+    private static final String TAG = "SignUpActivity";
+    private FirebaseAuth firebaseAuth;
     FirebaseDatabase database;
     DatabaseReference table_user;
 
@@ -109,6 +110,4 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
     }
-
-    private static final String TAG = "SignUpActivity";
 }
