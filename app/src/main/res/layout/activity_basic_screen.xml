@@ -28,7 +28,7 @@
             android:layout_marginTop="8dp"/>
 
         <Button
-            android:id="@+id/scheduleButton"
+            android:id="@+id/LectureButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -52,6 +52,17 @@
             android:background="@drawable/style_rightbutton"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/logoutBtn"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="15dp"
+            android:background="#FFFFFF"
+            android:drawableTop="@drawable/logout"
+            android:text="로그아웃"
+            android:textSize="10dp" />
 
     </LinearLayout>
 
@@ -81,7 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="공지사항"
+                    android:text="공 지 사 항"
                     android:textColor="#FF6347"
                     android:textSize="25dp"
                     android:textStyle="bold"
