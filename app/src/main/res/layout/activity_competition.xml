@@ -31,22 +31,26 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="검 색"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textSize="24sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/SchSubField"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="과목 명 입력" />
+                android:ems="7"
+                android:hint="과목명 입력"
+                android:inputType="textPersonName" />
 
             <Button
                 android:id="@+id/SearchBtn"
                 android:layout_width="10dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="검색" />
+                android:text="검 색"
+                android:textSize="24sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
