@@ -27,6 +27,7 @@
         <activity android:name=".BasicScreenActivity" />
         <activity android:name=".CompetsubSchActivity" />
         <activity android:name=".LectureActivity" />
+        <activity android:name=".InsertInfoActivity" />
     </application>
 
 </manifest>

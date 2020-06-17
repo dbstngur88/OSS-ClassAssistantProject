@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,6 +60,7 @@ public class InsertInfoActivity extends AppCompatActivity {
         ed_insert_prof = (EditText) findViewById(R.id.ed_insert_prof);
         ed_insert_room = (EditText) findViewById(R.id.ed_insert_room);
         ed_insert_psl = (EditText) findViewById(R.id.ed_insert_psl);
+
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
