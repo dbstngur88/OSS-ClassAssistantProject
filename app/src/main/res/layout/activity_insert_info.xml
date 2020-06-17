@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:background="#7FFFD4">
+
+                <ImageView
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/sunmoon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="강의 정보 입력 "
+                    android:textColor="#FF6347"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="15dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center">
+                <EditText
+                    android:id="@+id/ed_insert_year"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="해당연도 "
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@drawable/style_login"/>
+
+                <EditText
+                    android:id="@+id/ed_insert_term"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="해당학기 "
+                    android:inputType="textPassword"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorGreen"/>
+
+                <EditText
+                    android:id="@+id/ed_insert_univ"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="학적구분 "
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@color/colorGreen"/>
+
+                <EditText
+                    android:id="@+id/ed_insert_grade"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="해당학년 "
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@color/colorGreen"/>
+
+                <EditText
+                    android:id="@+id/ed_insert_area"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="신청구분 "
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@color/colorGreen"/>
+
+                <EditText
+                    android:id="@+id/ed_insert_major"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="개설학과 "
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@color/colorGreen"/>
+
+                <EditText
+                    android:id="@+id/ed_insert_title"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="교과목명 "
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@color/colorGreen"/>
+
+                <EditText
+                    android:id="@+id/ed_insert_cid"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="과목번호 "
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@color/colorGreen"/>
+
+                <EditText
+                    android:id="@+id/ed_insert_div"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="분반 "
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@color/colorGreen"/>
+
+                <EditText
+                    android:id="@+id/ed_insert_credit"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="학점 "
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@color/colorGreen"/>
+
+                <EditText
+                    android:id="@+id/ed_insert_time"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="강의시간 "
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@color/colorGreen"/>
+
+                <EditText
+                    android:id="@+id/ed_insert_prof"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="담당교수 "
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@color/colorGreen"/>
+
+                <EditText
+                    android:id="@+id/ed_insert_room"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="강의실 "
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@color/colorGreen"/>
+
+                <EditText
+                    android:id="@+id/ed_insert_psl"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="제한인원 "
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@drawable/style_pw"/>
+                <Button
+                    android:id="@+id/btn_save"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:text="저 장 "
+                    android:layout_marginTop="45dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@drawable/style_button"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
