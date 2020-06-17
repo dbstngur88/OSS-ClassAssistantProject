@@ -41,6 +41,19 @@
             android:layout_marginTop="8dp"/>
 
         <Button
+            android:id="@+id/testBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="testBtn"
+            android:textStyle="bold"
+            android:textColor="#FF6347"
+            android:textSize="18dp"
+            android:background="#7FFFD4"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"/>
+
+        <Button
             android:id="@+id/statisticsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
