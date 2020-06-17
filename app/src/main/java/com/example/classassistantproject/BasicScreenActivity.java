@@ -20,6 +20,7 @@ public class BasicScreenActivity extends AppCompatActivity {
         findViewById(R.id.LectureButton).setOnClickListener(onClickListener);
         findViewById(R.id.statisticsButton).setOnClickListener(onClickListener);
 
+
         if(FirebaseAuth.getInstance().getCurrentUser() == null){
             //현재유저가 null이면 - 로그인이 안됐을때.
             Intent intent = new Intent(BasicScreenActivity.this, MainActivity.class);

@@ -21,6 +21,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     // 파이어베이스 인스턴스
     private FirebaseAuth mAuth;
-    private FirebaseDatabase db;
+    private FirebaseFirestore fStore;
 
 
     @Override
@@ -44,12 +46,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btn_sign_in = (Button) findViewById(R.id.btn_sign_in);
         txt_sign_up = (TextView) findViewById(R.id.txt_sign_up);
-        txt_insert_info = (TextView) findViewById(R.id.txt_insert_info);
         ed_email = (EditText) findViewById(R.id.ed_email);
         ed_pw = (EditText) findViewById(R.id.ed_pw);
 
         mAuth = FirebaseAuth.getInstance();
-        db = FirebaseDatabase.getInstance();
+        fStore = FirebaseFirestore.getInstance();
 
 
         // 로그인 버튼 클릭
@@ -63,21 +64,6 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(MainActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
                             startBasicScreenActivity();
-                            db.getReference("User").child(ed_email.getText().toString().replace('.', ' ')).addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                                    // dataSnapshot.chile(키).getValue 로 학과, 학번, 이름 등 가져옴
-                                    Log.d(TAG, "onDataChange: " + dataSnapshot.child("num").getValue());
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                }
-                            });
-
-
                         } else
                             Toast.makeText(MainActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
                     }
@@ -94,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // 선문대 로고 클릭
+        // 선문대학교 클릭(강의정보 등록 위함)
         txt_insert_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
