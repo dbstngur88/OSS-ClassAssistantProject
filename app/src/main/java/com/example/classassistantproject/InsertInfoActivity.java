@@ -1,16 +1,25 @@
 package com.example.classassistantproject;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class InsertInfoActivity extends AppCompatActivity {
@@ -42,7 +51,7 @@ public class InsertInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_info);
 
-        // component
+        //
         btn_save = (Button) findViewById(R.id.btn_save);
         ed_insert_year = (EditText) findViewById(R.id.ed_insert_year);
         ed_insert_term = (EditText) findViewById(R.id.ed_insert_term);
@@ -90,8 +99,115 @@ public class InsertInfoActivity extends AppCompatActivity {
                 String prof = ed_insert_prof.getText().toString().trim();
                 String room = ed_insert_room.getText().toString().trim();
                 String psl = ed_insert_psl.getText().toString().trim();
+
+
+                // 빈칸 여부 체크. 추후 타입별 수정 예정...
+               if (TextUtils.isEmpty(year)) {
+                    ed_insert_year.setError("연도를 입력해주세요.");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(term)) {
+                    ed_insert_term.setError("학기를 입력해주세요.");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(univ)) {
+                    ed_insert_univ.setError("학적구분을 입력해주세요.");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(grade)) {
+                    ed_insert_grade.setError("학년을 입력해주세요.");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(area)) {
+                    ed_insert_area.setError("신청구분을 입력해주세요.");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(major)) {
+                    ed_insert_major.setError("개설학과를 입력해주세요.");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(title)) {
+                    ed_insert_title.setError("교과목명을 입력해주세요.");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(cid)) {
+                    ed_insert_cid.setError("과목번호를 입력해주세요.");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(div)) {
+                    ed_insert_div.setError("분반을 입력해주세요.");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(credit)) {
+                    ed_insert_credit.setError("학점을 입력해주세요.");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(time)) {
+                    ed_insert_time.setError("강의시간을 입력해주세요.");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(prof)) {
+                    ed_insert_prof.setError("담당교수님 성함을 입력해주세요.");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(room)) {
+                    ed_insert_room.setError("강의실을 입력해주세요.");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(psl)) {
+                    ed_insert_psl.setError("제한인원을 입력해주세요.");
+                    return;
+                }
+
+                Map<String, String> userMap = new HashMap<>();
+
+                userMap.put("courseYear", year);
+                userMap.put("courseTerm", term);
+                userMap.put("courseUniversity", univ);
+                userMap.put("courseGrade", grade);
+                userMap.put("courseArea", area);
+
+                userMap.put("courseMajor", major);
+                userMap.put("courserTitle", title);
+                userMap.put("courseID", cid);
+                userMap.put("courseDivide", div);
+                userMap.put("courseYear", credit);
+
+                userMap.put("courseTime", time);
+                userMap.put("courseProfessor", prof);
+                userMap.put("courseRoom", room);
+                userMap.put("coursePersonnel", psl);
+
+                fStore.collection("courseList").document(title)
+                .set(userMap)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(InsertInfoActivity.this, "강의정보가 성공적으로 등록되었습니다!",Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d("errer",e.getMessage());
+                                Toast.makeText(InsertInfoActivity.this, "오류가 발생했습니다!",Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
 
-        });
+        }) ;
     }
 }
