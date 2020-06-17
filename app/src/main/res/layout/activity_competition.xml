@@ -16,7 +16,7 @@
             android:layout_marginTop="20dp"
             android:src="@drawable/sunmoon"/>
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textField"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
@@ -40,23 +40,25 @@
 
             <TextView
                 android:id="@+id/Sch"
-                android:layout_width="5dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="과 목 검 색"
-                android:textColor="#FF6347"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="5dp"
-                android:background="@drawable/style_leftbutton"/>
+                android:layout_weight="1"
+                android:background="@drawable/style_leftbutton"
+                android:gravity="center"
+                android:text="과 목 검 색"
+                android:textColor="#FF6347" />
 
-            <TextView
+
+            <EditText
                 android:id="@+id/SchSubField"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="과목 명 입력" />
-
+                android:ems="10"
+                android:hint="과목을 입력하세요"
+                android:inputType="textPersonName" />
 
             <ImageButton
                 android:id="@+id/SearchBtn"
@@ -67,4 +69,29 @@
                 android:background="@drawable/style_rightbutton"/>
         </LinearLayout>
     </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </TableLayout>
 </LinearLayout>
