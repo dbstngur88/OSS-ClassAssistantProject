@@ -62,13 +62,13 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(MainActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+                            startBasicScreenActivity();
                             db.getReference("User").child(ed_email.getText().toString().replace('.', ' ')).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                                     // dataSnapshot.chile(키).getValue 로 학과, 학번, 이름 등 가져옴
                                     Log.d(TAG, "onDataChange: " + dataSnapshot.child("num").getValue());
-
                                 }
 
                                 @Override
@@ -110,4 +110,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private static final String TAG = "MainActivity";
+
+    private void startBasicScreenActivity(){
+        Intent intent = new Intent(this, BasicScreenActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);    //로그인한 상태에서 뒤로가기하면 로그인화면이 다시안뜨고 바로 종료되버리게
+        startActivity(intent);
+    }
+
 }
