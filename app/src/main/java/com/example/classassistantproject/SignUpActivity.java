@@ -14,16 +14,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
     Button btn_finish;
@@ -36,10 +35,10 @@ public class SignUpActivity extends AppCompatActivity {
 
     Spinner spinner;
 
+    String userID;
+
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    FirebaseDatabase database;
-    DatabaseReference table_user;
 
     private static final String TAG = "SignUpActivity";
 
@@ -69,13 +68,14 @@ public class SignUpActivity extends AppCompatActivity {
         btn_finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = ed_sign_name.getText().toString().trim();
-                String num = ed_sign_num.getText().toString().trim();
-                String email = ed_sign_email.getText().toString().trim();
-                String pw = ed_sign_pw.getText().toString().trim();
-                String phone = ed_sign_phone.getText().toString().trim();
+                final String name = ed_sign_name.getText().toString().trim();
+                final String num = ed_sign_num.getText().toString().trim();
+                final String email = ed_sign_email.getText().toString().trim();
+                final String pw = ed_sign_pw.getText().toString().trim();
+                final String phone = ed_sign_phone.getText().toString().trim();
+                final String department = spinner.getSelectedItem().toString().trim();
 
-                // 빈칸 여부와 비밀번호 최소길이 확
+                // 빈칸 여부와 비밀번호 최소길이 확인
                 if (TextUtils.isEmpty(email)) {
                     ed_sign_email.setError("이메일을 입력해주세요.");
                     return;
@@ -87,16 +87,33 @@ public class SignUpActivity extends AppCompatActivity {
                 }
 
                 if (pw.length() < 6 ) {
-                    ed_sign_pw.setError("비밀번호는 6자리 이상입니다.");
+                    ed_sign_pw.setError("비밀번호는 6자리 이상 필요합니다.");
                     return;
                 }
 
-
+                //firebase에 사용자 정보 등록
                 fAuth.createUserWithEmailAndPassword(email, pw).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                          if (task .isSuccessful()) {
                              Toast.makeText(SignUpActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                             userID = fAuth.getCurrentUser().getUid();
+                             DocumentReference documentReference = fStore.collection("users").document(userID);
+
+                             Map<String, Object> userMap = new HashMap<>();
+                             userMap.put("name", name);
+                             userMap.put("number", num);
+                             userMap.put("email", email);
+                             userMap.put("pwd", pw);
+                             userMap.put("phone", phone);
+                             userMap.put("department", department);
+
+                             documentReference.set(userMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                 @Override
+                                 public void onSuccess(Void aVoid) {
+                                     Log.d(TAG, "successed. user Profile is created for" + userID);
+                                 }
+                             });
                              startActivity(new Intent(getApplicationContext(),MainActivity.class));
                          } else{
                              Toast.makeText(SignUpActivity.this, "회원가입에 실패했습니다." + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
