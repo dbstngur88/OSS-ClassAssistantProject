@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class BasicScreenActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,7 @@ public class BasicScreenActivity extends AppCompatActivity {
         findViewById(R.id.logoutBtn).setOnClickListener(onClickListener);
         findViewById(R.id.LectureButton).setOnClickListener(onClickListener);
         findViewById(R.id.statisticsButton).setOnClickListener(onClickListener);
+        findViewById(R.id.txt_insert_info).setOnClickListener(onClickListener);
 
 
         if(FirebaseAuth.getInstance().getCurrentUser() == null){
@@ -33,10 +36,12 @@ public class BasicScreenActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent intent;
             switch (v.getId()) {
+
                 case R.id.courseButton:
                     intent = new Intent(BasicScreenActivity.this, CourseActivity.class);
                     startActivity(intent);
                     break;
+
                 case R.id.logoutBtn:
                     //로그아웃
                     FirebaseAuth.getInstance().signOut();
@@ -44,16 +49,22 @@ public class BasicScreenActivity extends AppCompatActivity {
                     intent = new Intent(BasicScreenActivity.this, MainActivity.class);
                     startActivity(intent);
                     break;
+
                 case R.id.LectureButton:
                     intent = new Intent(BasicScreenActivity.this, LectureActivity.class);
                     startActivity(intent);
                     break;
+
                 case R.id.statisticsButton:
                     intent = new Intent(BasicScreenActivity.this, CompetsubSchActivity.class);
+                    startActivity(intent);
+                    break;
+
+                case R.id.txt_insert_info:
+                    intent = new Intent(BasicScreenActivity.this, InsertInfoActivity.class);
                     startActivity(intent);
                     break;
             }
         }
     };
-
 }

@@ -29,16 +29,12 @@ public class MainActivity extends AppCompatActivity {
 
     Button btn_sign_in;
     TextView txt_sign_up;
-    TextView txt_insert_info;
 
     EditText ed_email;
     EditText ed_pw;
 
-
     // 파이어베이스 인스턴스
     private FirebaseAuth mAuth;
-    private FirebaseFirestore fStore;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
         ed_pw = (EditText) findViewById(R.id.ed_pw);
 
         mAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-
 
         // 로그인 버튼 클릭
         btn_sign_in.setOnClickListener(new View.OnClickListener() {
@@ -80,19 +74,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // 선문대학교 클릭(강의정보 등록 위함)
-        txt_insert_info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), InsertInfoActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-
-
-        //commit and push test code
     }
 
     private static final String TAG = "MainActivity";
