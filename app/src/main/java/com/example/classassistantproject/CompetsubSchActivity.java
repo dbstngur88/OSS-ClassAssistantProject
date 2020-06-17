@@ -46,8 +46,9 @@ public class CompetsubSchActivity extends AppCompatActivity {
     private void schSub(){
         String getSub = ((EditText)findViewById(R.id.SchSubField)).getText().toString();
         if(getSub.length() >0 ){
+            startToast(getSub+"로 검색합니다...");
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
             db.collection("courseList")
                     .whereEqualTo("courseTitle", getSub)
@@ -57,15 +58,16 @@ public class CompetsubSchActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
-                                   //test CompetSubInfo subInfo = documentSnapshot.toObject(CompetSubInfo.class);
+                                    //String occupancy = (String) document.get("courseOccupancy");  //if the field is String
+                                   // String personal = (String) document.get("coursePersonal");  //if the field is String
+                                   // String professor = (String) document.get("courseProfessor");  //if the field is String
+                                    String title = (String) document.get("courseTitle");  //if the field is String
 
-                                    String occupancy; String personal; String professor; String title;
-                                   //test  occupancy = ;
-
+                                    startToast(title);
                                     Log.d(TAG, document.getId() + " => " + document.getData());
                                 }
                             } else {
-                                Log.d(TAG, "Error getting documents: ", task.getException());
+                                    startToast("일치하는 결과가 없습니다.");
                             }
                         }
                     });
