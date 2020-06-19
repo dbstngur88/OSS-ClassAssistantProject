@@ -1,5 +1,6 @@
 package com.example.classassistantproject;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,10 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText ed_email;
     EditText ed_pw;
-
     // 파이어베이스 인스턴스
     private FirebaseAuth mAuth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         ed_pw = (EditText) findViewById(R.id.ed_pw);
 
         mAuth = FirebaseAuth.getInstance();
-
         // 로그인 버튼 클릭
         btn_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,8 +54,15 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(MainActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
-                            startBasicScreenActivity();
+                            final ProgressDialog mDialog = new ProgressDialog(MainActivity.this);
+                            mDialog.setMessage("로그인 중...");
+                            mDialog.show();
+                            Toast.makeText(MainActivity.this, ed_email.getText().toString()+" 님 로그인 성공", Toast.LENGTH_SHORT).show();
+
+                            //자동로그인 기능
+                            Intent intent = new Intent(MainActivity.this,BasicScreenActivity.class);
+                            startActivity(intent);
+                            finish();
                         } else
                             Toast.makeText(MainActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
                     }

@@ -1,4 +1,5 @@
 package com.example.classassistantproject;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -96,6 +97,9 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                          if (task .isSuccessful()) {
+                             final ProgressDialog mDialog = new ProgressDialog(SignUpActivity.this);
+                             mDialog.setMessage("가입중입니다...");
+                             mDialog.show();
                              Toast.makeText(SignUpActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                              userID = fAuth.getCurrentUser().getUid();
                              DocumentReference documentReference = fStore.collection("users").document(userID);
