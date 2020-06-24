@@ -1,9 +1,11 @@
 package com.example.classassistantproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,6 +29,8 @@ public class CompetsubSchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_competition);
 
         findViewById(R.id.SearchBtn).setOnClickListener(onClickListener);
+        findViewById(R.id.GoBackBtn).setOnClickListener(onClickListener);
+        findViewById(R.id.GoEvaluationBtn).setOnClickListener(onClickListener);
 
     }
 
@@ -34,10 +38,18 @@ public class CompetsubSchActivity extends AppCompatActivity {
     View.OnClickListener onClickListener = new View.OnClickListener(){
         @Override
         public void onClick(View v){
+            Intent intent;
             switch(v.getId()){
                 case R.id.SearchBtn:
                     startToast("검색을 시도합니다..");
                     schSub();
+                    break;
+                case R.id.GoBackBtn:
+                    onBackPressed();
+                    break;
+                case R.id.GoEvaluationBtn:
+                    intent = new Intent(CompetsubSchActivity.this, BasicScreenActivity.class);
+                    startActivity(intent);
                     break;
             }
         }
@@ -45,12 +57,13 @@ public class CompetsubSchActivity extends AppCompatActivity {
 
     private void schSub(){
         String getSub = ((EditText)findViewById(R.id.SchSubField)).getText().toString();
+
         if(getSub.length() >0 ){
             startToast(getSub+"로 검색합니다...");
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-            db.collection("courseList")
+            db.collection("courseList")     //TestCode, 수정필요(courseList ->competition)
                     .whereEqualTo("courseTitle", getSub)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -58,13 +71,24 @@ public class CompetsubSchActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
-                                    //String occupancy = (String) document.get("courseOccupancy");  //if the field is String
-                                   // String personal = (String) document.get("coursePersonal");  //if the field is String
-                                   // String professor = (String) document.get("courseProfessor");  //if the field is String
-                                    String title = (String) document.get("courseTitle");  //if the field is String
+                                    TextView SubName = (TextView) findViewById(R.id.SubNameView) ;              //과목 명
+                                    TextView SubProfessor = (TextView) findViewById(R.id.SubProfessorView) ;    //교수 명
+                                    TextView SubPersonal = (TextView) findViewById(R.id.SubPersonalView) ;      //수강 총원
+                                    TextView SubOccupancy = (TextView) findViewById(R.id.SubOccupancyView) ;    //신청 인원
+                                    TextView SubRate = (TextView) findViewById(R.id.SubRateView) ;              //과목 경쟁률
 
-                                    startToast(title);
-                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    String subName = (String) document.get("courseTitle");
+                                    String subProfessor = (String) document.get("courseProfessor");
+                                    String subPersonal = (String) document.get("coursePersonal");
+                                    //int subOccupancy = (int) document.get("courseOccupancy");
+                                    String subOccupancy = (String) document.get("coursePersonal");        //testcode(수정 필요)
+                                    //double subRate = subPersonal / (subOccupancy + 10);
+
+                                    SubName.setText(subName) ;
+                                    SubProfessor.setText(subProfessor);
+                                    SubPersonal.setText(subPersonal);
+                                    SubOccupancy.setText(subOccupancy);
+                                   // SubRate.setText("1 : "+ subRate);
                                 }
                             } else {
                                     startToast("일치하는 결과가 없습니다.");

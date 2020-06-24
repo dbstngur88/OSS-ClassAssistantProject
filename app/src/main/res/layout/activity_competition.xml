@@ -172,14 +172,14 @@
                 android:layout_height="match_parent" >
 
                 <TextView
-                    android:id="@+id/SubOccupancyView"
+                    android:id="@+id/SubPersonalView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/SubPersonalView"
+                    android:id="@+id/SubOccupancyView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -200,7 +200,7 @@
             android:layout_height="40dp" />
 
         <Button
-            android:id="@+id/WriteEvaluationBtn"
+            android:id="@+id/GoBackBtn"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_gravity="center|center_horizontal"
@@ -212,7 +212,7 @@
             android:layout_height="20dp" />
 
         <Button
-            android:id="@+id/writeEvaluationBtn"
+            android:id="@+id/GoEvaluationBtn"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_gravity="center|center_horizontal"
