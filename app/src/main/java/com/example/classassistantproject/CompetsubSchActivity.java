@@ -87,7 +87,7 @@ public class CompetsubSchActivity extends AppCompatActivity {
                                     SubProfessor.setText(subProfessor);
                                     SubPersonal.setText(Long.toString(subPersonal));
                                     SubOccupancy.setText(Long.toString(subOccupancy));
-                                    SubRate.setText("1 : "+ String.valueOf(subRate));
+                                    SubRate.setText("1 : "+ subRate);
 
                                 }
                             } else {
