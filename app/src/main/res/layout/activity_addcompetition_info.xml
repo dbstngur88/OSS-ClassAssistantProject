@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:background="#7FFFD4">
+
+                <ImageView
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/sunmoon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="경쟁률 초기 정보 입력"
+                    android:textColor="#FF6347"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="15dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center">
+
+                <EditText
+                    android:id="@+id/insertProfessorField"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorGreen"
+                    android:hint="교수 명"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347" />
+
+                <EditText
+                    android:id="@+id/insertSubField"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="과목 명"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@color/colorGreen"/>
+
+                <EditText
+                    android:id="@+id/insertPersonalField"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="수강 총원"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@color/colorGreen"/>
+
+                <EditText
+                    android:id="@+id/insertOccupancyField"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:hint="신청 인원"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@color/colorGreen"/>
+
+                <Button
+                    android:id="@+id/saveBtn"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:text="저 장 "
+                    android:layout_marginTop="45dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@drawable/style_button"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -204,7 +204,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_gravity="center|center_horizontal"
-            android:text="돌 아 가 기"
+            android:text="돌 아 가 기\n(임시)경쟁률 테이블에 데이터 추가"
             android:textSize="20sp" />
 
         <Space

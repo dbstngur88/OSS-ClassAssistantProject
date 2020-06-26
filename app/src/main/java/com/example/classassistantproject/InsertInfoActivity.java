@@ -176,7 +176,7 @@ public class InsertInfoActivity extends AppCompatActivity {
                 userMap.put("courseArea", area);
 
                 userMap.put("courseMajor", major);
-                userMap.put("courserTitle", title);
+                userMap.put("courseTitle", title);
                 userMap.put("courseID", cid);
                 userMap.put("courseDivide", div);
                 userMap.put("courseYear", credit);
@@ -197,7 +197,7 @@ public class InsertInfoActivity extends AppCompatActivity {
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Log.d("errer",e.getMessage());
+                                Log.d("error",e.getMessage());
                                 Toast.makeText(InsertInfoActivity.this, "오류가 발생했습니다!",Toast.LENGTH_SHORT).show();
                             }
                         });
