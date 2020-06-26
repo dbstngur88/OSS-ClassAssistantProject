@@ -35,6 +35,12 @@
         android:layout_marginTop="10dp"
         android:orientation="vertical">
 
+        <Switch
+            android:id="@+id/SchSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="과목 / 교수 스위치" />
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
@@ -63,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="과목을 입력하세요"
+                android:hint="과목명을 입력하세요"
                 android:inputType="textPersonName" />
 
             <ImageButton
