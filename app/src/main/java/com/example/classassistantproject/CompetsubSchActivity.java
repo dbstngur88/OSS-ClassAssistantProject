@@ -79,16 +79,16 @@ public class CompetsubSchActivity extends AppCompatActivity {
 
                                     String subName = (String) document.get("courseTitle");
                                     String subProfessor = (String) document.get("courseProfessor");
-                                    String subPersonal = (String) document.get("coursePersonal");
-                                    //int subOccupancy = (int) document.get("courseOccupancy");
-                                    String subOccupancy = (String) document.get("coursePersonal");        //testcode(수정 필요)
-                                    //double subRate = subPersonal / (subOccupancy + 10);
+                                    Long subOccupancy = (Long) document.get("coursePersonal") + 10;    //TestCode, 수정필요(("coursePersonal") + 10 -> (("courseOccupancy"))
+                                    Long subPersonal = (Long) document.get("coursePersonal");
+                                    Double subRate = (double)(subOccupancy) / (double)(subPersonal);
 
                                     SubName.setText(subName) ;
                                     SubProfessor.setText(subProfessor);
-                                    SubPersonal.setText(subPersonal);
-                                    SubOccupancy.setText(subOccupancy);
-                                   // SubRate.setText("1 : "+ subRate);
+                                    SubPersonal.setText(Long.toString(subPersonal));
+                                    SubOccupancy.setText(Long.toString(subOccupancy));
+                                    SubRate.setText("1 : "+ String.valueOf(subRate));
+
                                 }
                             } else {
                                     startToast("일치하는 결과가 없습니다.");
