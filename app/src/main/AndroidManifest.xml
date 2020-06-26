@@ -29,6 +29,7 @@
         <activity android:name=".LectureActivity" />
         <activity android:name=".InsertInfoActivity" />
         <activity android:name=".RatingActivity" />
+        <activity android:name=".InsertCompetDataActivity" />
     </application>
 
 </manifest>

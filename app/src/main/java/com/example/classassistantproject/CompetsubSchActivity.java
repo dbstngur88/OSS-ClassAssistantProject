@@ -45,7 +45,9 @@ public class CompetsubSchActivity extends AppCompatActivity {
                     schSub();
                     break;
                 case R.id.GoBackBtn:
-                    onBackPressed();
+                    //onBackPressed();
+                    intent = new Intent(CompetsubSchActivity.this, InsertCompetDataActivity.class); //임시코드
+                    startActivity(intent); //임시코드
                     break;
                 case R.id.GoEvaluationBtn:
                     intent = new Intent(CompetsubSchActivity.this, RatingActivity.class);
