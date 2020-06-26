@@ -88,7 +88,8 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:stretchColumns="0,1">
+            android:stretchColumns="0,1"
+            android:layout_marginTop="10dp">
 
 
             <TableRow
@@ -101,7 +102,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="과 목 명"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textColor="#FF6347"
+                    android:background="@drawable/style_login"/>
 
                 <TextView
                     android:id="@+id/textView4"
@@ -109,34 +112,35 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="교 수"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textColor="#FF6347"
+                    android:background="@drawable/style_login"/>
 
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/SubNameView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:background="@drawable/cell_shape" />
 
                 <TextView
                     android:id="@+id/SubProfessorView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/cell_shape" />
             </TableRow>
 
         </TableLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp" />
 
         <TableLayout
             android:layout_width="match_parent"
@@ -146,7 +150,7 @@
 
         <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/textView5"
@@ -154,7 +158,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="수 강 총 원"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="#FF6347"
+                android:background="@drawable/style_login"/>
 
             <TextView
                 android:id="@+id/textView6"
@@ -162,7 +168,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="신 청 인 원"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="#FF6347"
+                android:background="@drawable/style_login" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -170,7 +178,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="경 쟁 률"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="#FF6347"
+                android:background="@drawable/style_login" />
         </TableRow>
 
             <TableRow
@@ -182,50 +192,57 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:background="@drawable/cell_shape"/>
 
                 <TextView
                     android:id="@+id/SubOccupancyView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:background="@drawable/cell_shape"/>
 
                 <TextView
                     android:id="@+id/SubRateView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:layout_marginBottom="90dp"
+                    android:background="@drawable/cell_shape"/>
             </TableRow>
 
         </TableLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="40dp" />
 
         <Button
             android:id="@+id/GoBackBtn"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center|center_horizontal"
+            android:background="@drawable/style_login"
             android:text="돌 아 가 기"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textColor="#FF6347"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"/>
         <!--android:text="돌 아 가 기\n(임시)경쟁률 테이블에 데이터 추가"
             경쟁률 데이터만 추가 필요시 text내용을 해당 코드와 변경해 사용-->
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
 
         <Button
             android:id="@+id/GoEvaluationBtn"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center|center_horizontal"
-            android:text="한줄평\n보러가기"
-            android:textSize="20sp" />
+            android:background="@drawable/style_pw"
+            android:text="한 줄 평 \t 보 러 가 기"
+            android:textSize="20sp"
+            android:textColor="#FF6347"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -9,6 +9,7 @@
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="7dp">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -71,19 +72,40 @@
                 android:orientation="horizontal"
                 android:background="@drawable/style_pw">
                 <TextView
+                    android:id="@+id/courseTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="강의 시간"
+                    android:layout_gravity="center"
+                    android:padding="3dp"
+                    android:layout_marginRight="8dp"
+                    android:textColor="#FF6347"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/courseRoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="강의실"
+                    android:layout_gravity="center"
+                    android:padding="3dp"
+                    android:layout_marginRight="8dp"
+                    android:textColor="#FF6347"
+                    android:textStyle="bold"/>
+                <TextView
                     android:id="@+id/coursePersonnel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="강의 인원"
                     android:layout_gravity="center"
                     android:padding="3dp"
+                    android:layout_marginRight="8dp"
                     android:textColor="#FF6347"
                     android:textStyle="bold"/>
                 <TextView
-                    android:id="@+id/courseTime"
+                    android:id="@+id/courseRealPersonnel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="강의 시간"
+                    android:text="강의 신청 인원"
                     android:layout_gravity="center"
                     android:padding="3dp"
                     android:textColor="#FF6347"
