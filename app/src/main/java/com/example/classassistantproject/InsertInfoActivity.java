@@ -96,7 +96,7 @@ public class InsertInfoActivity extends AppCompatActivity {
                 String psl = ed_insert_psl.getText().toString().trim();
 
 
-                // 빈칸 여부 체크. 추후 타입별 수정 예정...
+                // 빈칸 여부 체크
                if (TextUtils.isEmpty(year)) {
                     ed_insert_year.setError("연도를 입력해주세요.");
                     return;
@@ -167,27 +167,27 @@ public class InsertInfoActivity extends AppCompatActivity {
                     return;
                 }
 
-                Map<String, String> userMap = new HashMap<>();
+                //
+                Map<String, String> infoMap = new HashMap<>();
+                infoMap.put("courseYear", year);
+                infoMap.put("courseTerm", term);
+                infoMap.put("courseUniversity", univ);
+                infoMap.put("courseGrade", grade);
+                infoMap.put("courseArea", area);
 
-                userMap.put("courseYear", year);
-                userMap.put("courseTerm", term);
-                userMap.put("courseUniversity", univ);
-                userMap.put("courseGrade", grade);
-                userMap.put("courseArea", area);
+                infoMap.put("courseMajor", major);
+                infoMap.put("courseTitle", title);
+                infoMap.put("courseID", cid);
+                infoMap.put("courseDivide", div);
+                infoMap.put("courseCredit", credit);
 
-                userMap.put("courseMajor", major);
-                userMap.put("courserTitle", title);
-                userMap.put("courseID", cid);
-                userMap.put("courseDivide", div);
-                userMap.put("courseYear", credit);
-
-                userMap.put("courseTime", time);
-                userMap.put("courseProfessor", prof);
-                userMap.put("courseRoom", room);
-                userMap.put("coursePersonnel", psl);
+                infoMap.put("courseTime", time);
+                infoMap.put("courseProfessor", prof);
+                infoMap.put("courseRoom", room);
+                infoMap.put("coursePersonnel", psl);
 
                 fStore.collection("courseList").document(title)
-                .set(userMap)
+                .set(infoMap)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
