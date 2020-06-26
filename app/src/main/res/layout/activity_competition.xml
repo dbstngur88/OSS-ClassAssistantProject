@@ -204,8 +204,10 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_gravity="center|center_horizontal"
-            android:text="돌 아 가 기\n(임시)경쟁률 테이블에 데이터 추가"
+            android:text="돌 아 가 기"
             android:textSize="20sp" />
+        <!--android:text="돌 아 가 기\n(임시)경쟁률 테이블에 데이터 추가"
+            경쟁률 데이터만 추가 필요시 text내용을 해당 코드와 변경해 사용-->
 
         <Space
             android:layout_width="match_parent"

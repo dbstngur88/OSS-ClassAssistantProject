@@ -36,6 +36,7 @@ public class InsertCompetDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addcompetition_info);
         findViewById(R.id.saveBtn).setOnClickListener(onClickListener);
+        findViewById(R.id.GoBackBtn).setOnClickListener(onClickListener);
 
         fStore = FirebaseFirestore.getInstance();
 
@@ -49,6 +50,9 @@ public class InsertCompetDataActivity extends AppCompatActivity {
             switch(v.getId()){
                 case R.id.saveBtn:
                     insertData();
+                    break;
+                case R.id.GoBackBtn:
+                    onBackPressed();
                     break;
             }
         }

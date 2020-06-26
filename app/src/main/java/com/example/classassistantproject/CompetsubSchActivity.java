@@ -41,13 +41,23 @@ public class CompetsubSchActivity extends AppCompatActivity {
             Intent intent;
             switch(v.getId()){
                 case R.id.SearchBtn:
+                    //검색 전 시각화 칸 초기화(내용 제거)
+                    ((TextView)findViewById(R.id.SubNameView)).setText(null);
+                    ((TextView)findViewById(R.id.SubProfessorView)).setText(null);
+                    ((TextView)findViewById(R.id.SubPersonalView)).setText(null);
+                    ((TextView)findViewById(R.id.SubOccupancyView)).setText(null);
+                    ((TextView)findViewById(R.id.SubRateView)).setText(null);
+
                     startToast("검색을 시도합니다..");
                     schSub();
                     break;
                 case R.id.GoBackBtn:
-                    //onBackPressed();
-                    intent = new Intent(CompetsubSchActivity.this, InsertCompetDataActivity.class); //임시코드
-                    startActivity(intent); //임시코드
+                    onBackPressed();
+                    /*
+                    경쟁률 테이블 데이터 추가용 코드, 필요 시 위 코드와 주석을 변경해서 사용
+                    intent = new Intent(CompetsubSchActivity.this, InsertCompetDataActivity.class);
+                    startActivity(intent);
+                    */
                     break;
                 case R.id.GoEvaluationBtn:
                     intent = new Intent(CompetsubSchActivity.this, RatingActivity.class);
@@ -65,7 +75,7 @@ public class CompetsubSchActivity extends AppCompatActivity {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-            db.collection("courseList")     //TestCode, 수정필요(courseList ->competition)
+            db.collection("competition")     //TestCode, 수정필요(courseList ->competition)
                     .whereEqualTo("courseTitle", getSub)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -81,14 +91,15 @@ public class CompetsubSchActivity extends AppCompatActivity {
 
                                     String subName = (String) document.get("courseTitle");
                                     String subProfessor = (String) document.get("courseProfessor");
-                                    Long subOccupancy = (Long) document.get("coursePersonal") + 10;    //TestCode, 수정필요(("coursePersonal") + 10 -> (("courseOccupancy"))
-                                    Long subPersonal = (Long) document.get("coursePersonal");
-                                    Double subRate = (double)(subOccupancy) / (double)(subPersonal);
+                                    String subOccupancy = (String) document.get("courseOccupancy");
+                                    String subPersonal = (String) document.get("coursePersonal");
+
+                                    Double subRate = Double.parseDouble(subOccupancy) / Double.parseDouble(subPersonal);
 
                                     SubName.setText(subName) ;
                                     SubProfessor.setText(subProfessor);
-                                    SubPersonal.setText(Long.toString(subPersonal));
-                                    SubOccupancy.setText(Long.toString(subOccupancy));
+                                    SubPersonal.setText(subPersonal);
+                                    SubOccupancy.setText(subOccupancy);
                                     SubRate.setText("1 : "+ subRate);
 
                                 }

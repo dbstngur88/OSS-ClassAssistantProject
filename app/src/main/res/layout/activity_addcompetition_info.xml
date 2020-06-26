@@ -104,6 +104,18 @@
                     android:textColor="#FF6347"
                     android:textColorHint="#FF6347"
                     android:background="@drawable/style_button"/>
+
+                <Button
+                    android:id="@+id/GoBackBtn"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:text="돌 아 가 기"
+                    android:layout_marginTop="45dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="#FF6347"
+                    android:textColorHint="#FF6347"
+                    android:background="@drawable/style_button"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
