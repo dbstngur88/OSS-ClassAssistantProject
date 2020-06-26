@@ -90,6 +90,11 @@ public class InsertCompetDataActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         startToast("경쟁률 정보 등록 성공");
+                        ((EditText)findViewById(R.id.insertProfessorField)).setText(null);
+                        ((EditText)findViewById(R.id.insertSubField)).setText(null);
+                        ((EditText)findViewById(R.id.insertPersonalField)).setText(null);
+                        ((EditText)findViewById(R.id.insertOccupancyField)).setText(null);
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

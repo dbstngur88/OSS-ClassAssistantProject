@@ -168,6 +168,7 @@ public class InsertInfoActivity extends AppCompatActivity {
                 }
 
                 Map<String, String> userMap = new HashMap<>();
+                Map<String, Object> userMap2 = new HashMap<>();
 
                 userMap.put("courseYear", year);
                 userMap.put("courseTerm", term);
@@ -186,6 +187,13 @@ public class InsertInfoActivity extends AppCompatActivity {
                 userMap.put("courseRoom", room);
                 userMap.put("coursePersonnel", psl);
 
+                //경쟁률 기능 데이터 추가
+                userMap2.put("courseProfessor", prof);
+                userMap2.put("courseTitle", title);
+                userMap2.put("coursePersonal", psl);
+                userMap2.put("courseOccupancy", 24);
+
+
                 fStore.collection("courseList").document(title)
                 .set(userMap)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -201,7 +209,26 @@ public class InsertInfoActivity extends AppCompatActivity {
                                 Toast.makeText(InsertInfoActivity.this, "오류가 발생했습니다!",Toast.LENGTH_SHORT).show();
                             }
                         });
+
+                //경쟁률 테이블에도 데이터 추가
+                fStore.collection("competition").document(title)
+                        .set(userMap2)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(InsertInfoActivity.this, "경쟁률정보 등록 성공",Toast.LENGTH_SHORT).show();
+
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d("error",e.getMessage());
+                                Toast.makeText(InsertInfoActivity.this, "경쟁률정보 등록 실패, 오류 발생",Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
+
 
         }) ;
     }
