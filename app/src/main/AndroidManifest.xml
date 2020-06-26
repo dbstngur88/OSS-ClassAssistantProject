@@ -28,6 +28,7 @@
         <activity android:name=".CompetsubSchActivity" />
         <activity android:name=".LectureActivity" />
         <activity android:name=".InsertInfoActivity" />
+        <activity android:name=".RatingActivity" />
     </application>
 
 </manifest>

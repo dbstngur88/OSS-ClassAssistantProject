@@ -2,7 +2,6 @@ package com.example.classassistantproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,21 +18,19 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-public class CompetsubSchActivity extends AppCompatActivity {
+public class RatingActivity extends AppCompatActivity {
 
     private static final String TAG = "SubSearchProcess";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_competition);
+        setContentView(R.layout.activity_rating);
 
         findViewById(R.id.SearchBtn).setOnClickListener(onClickListener);
         findViewById(R.id.GoBackBtn).setOnClickListener(onClickListener);
-        findViewById(R.id.GoEvaluationBtn).setOnClickListener(onClickListener);
 
     }
-
 
     View.OnClickListener onClickListener = new View.OnClickListener(){
         @Override
@@ -46,10 +43,6 @@ public class CompetsubSchActivity extends AppCompatActivity {
                     break;
                 case R.id.GoBackBtn:
                     onBackPressed();
-                    break;
-                case R.id.GoEvaluationBtn:
-                    intent = new Intent(CompetsubSchActivity.this, RatingActivity.class);
-                    startActivity(intent);
                     break;
             }
         }
@@ -71,27 +64,10 @@ public class CompetsubSchActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
-                                    TextView SubName = (TextView) findViewById(R.id.SubNameView) ;              //과목 명
-                                    TextView SubProfessor = (TextView) findViewById(R.id.SubProfessorView) ;    //교수 명
-                                    TextView SubPersonal = (TextView) findViewById(R.id.SubPersonalView) ;      //수강 총원
-                                    TextView SubOccupancy = (TextView) findViewById(R.id.SubOccupancyView) ;    //신청 인원
-                                    TextView SubRate = (TextView) findViewById(R.id.SubRateView) ;              //과목 경쟁률
-
-                                    String subName = (String) document.get("courseTitle");
-                                    String subProfessor = (String) document.get("courseProfessor");
-                                    Long subOccupancy = (Long) document.get("coursePersonal") + 10;    //TestCode, 수정필요(("coursePersonal") + 10 -> (("courseOccupancy"))
-                                    Long subPersonal = (Long) document.get("coursePersonal");
-                                    Double subRate = (double)(subOccupancy) / (double)(subPersonal);
-
-                                    SubName.setText(subName) ;
-                                    SubProfessor.setText(subProfessor);
-                                    SubPersonal.setText(Long.toString(subPersonal));
-                                    SubOccupancy.setText(Long.toString(subOccupancy));
-                                    SubRate.setText("1 : "+ subRate);
-
+                                    startToast("일치하는 결과를 찾았습니다.");
                                 }
                             } else {
-                                    startToast("일치하는 결과가 없습니다.");
+                                startToast("일치하는 결과가 없습니다.");
                             }
                         }
                     });
