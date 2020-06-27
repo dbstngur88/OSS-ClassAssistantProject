@@ -1,5 +1,7 @@
 package com.example.classassistantproject;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,20 +21,41 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CompetsubSchActivity extends AppCompatActivity {
 
     private static final String TAG = "SubSearchProcess";
     boolean SchPro = false;
     Switch SchSelectSwitch;
+    CharSequence[] items;
+    String ProfessorselectSubject;  //교수명 검색 후 선택한 과목 값 저장
+    String getPro;
+
+
+    TextView SubName;              //과목 명
+    TextView SubProfessor;    //교수 명
+    TextView SubPersonal;      //수강 총원
+    TextView SubOccupancy;    //신청 인원
+    TextView SubRate;              //과목 경쟁률
+
+    String subName = null;
+    String subProfessor = null;
+    String subOccupancy = null;
+    String subPersonal = null;
+    Double subRate = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_competition);
 
+
         findViewById(R.id.SearchBtn).setOnClickListener(onClickListener);
         findViewById(R.id.GoBackBtn).setOnClickListener(onClickListener);
         findViewById(R.id.GoEvaluationBtn).setOnClickListener(onClickListener);
+        findViewById(R.id.ActivateBtn).setOnClickListener(onClickListener);
 
 
         //스위치의 값에 따라 검색하는 종류가 달라지게 설정
@@ -98,6 +121,9 @@ public class CompetsubSchActivity extends AppCompatActivity {
                     intent = new Intent(CompetsubSchActivity.this, RatingActivity.class);
                     startActivity(intent);
                     break;
+                case R.id.ActivateBtn:
+                    schProtoSub();
+                    break;
             }
         }
     };
@@ -118,16 +144,17 @@ public class CompetsubSchActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
-                                    TextView SubName = (TextView) findViewById(R.id.SubNameView) ;              //과목 명
-                                    TextView SubProfessor = (TextView) findViewById(R.id.SubProfessorView) ;    //교수 명
-                                    TextView SubPersonal = (TextView) findViewById(R.id.SubPersonalView) ;      //수강 총원
-                                    TextView SubOccupancy = (TextView) findViewById(R.id.SubOccupancyView) ;    //신청 인원
-                                    TextView SubRate = (TextView) findViewById(R.id.SubRateView) ;              //과목 경쟁률
 
-                                    String subName = (String) document.get("courseTitle");
-                                    String subProfessor = (String) document.get("courseProfessor");
-                                    String subOccupancy = (String) document.get("courseOccupancy");
-                                    String subPersonal = (String) document.get("coursePersonal");
+                                    SubName = (TextView) findViewById(R.id.SubNameView) ;              //과목 명
+                                    SubProfessor = (TextView) findViewById(R.id.SubProfessorView) ;    //교수 명
+                                    SubPersonal = (TextView) findViewById(R.id.SubPersonalView) ;      //수강 총원
+                                    SubOccupancy = (TextView) findViewById(R.id.SubOccupancyView) ;    //신청 인원
+                                    SubRate = (TextView) findViewById(R.id.SubRateView) ;              //과목 경쟁률
+
+                                    subName = (String) document.get("courseTitle");
+                                    subProfessor = (String) document.get("courseProfessor");
+                                    subOccupancy = (String) document.get("courseOccupancy");
+                                    subPersonal = (String) document.get("coursePersonal");
 
                                     Double subRate = Double.parseDouble(subOccupancy) / Double.parseDouble(subPersonal);
 
@@ -150,40 +177,53 @@ public class CompetsubSchActivity extends AppCompatActivity {
     }
 
     private void schPro(){
-        String getPro = ((EditText)findViewById(R.id.SchSubField)).getText().toString();
-
+        getPro = ((EditText)findViewById(R.id.SchSubField)).getText().toString();
         if(getPro.length() >0 ){
             startToast(getPro+"교수님으로 검색합니다...");
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-            db.collection("competition")     //TestCode, 수정필요(courseList ->competition)
+            db.collection("competition")
                     .whereEqualTo("courseProfessor", getPro)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
+                                List<String> titleList = new ArrayList<>();
                                 for (QueryDocumentSnapshot document : task.getResult()) {
-                                    TextView SubName = (TextView) findViewById(R.id.SubNameView) ;              //과목 명
-                                    TextView SubProfessor = (TextView) findViewById(R.id.SubProfessorView) ;    //교수 명
-                                    TextView SubPersonal = (TextView) findViewById(R.id.SubPersonalView) ;      //수강 총원
-                                    TextView SubOccupancy = (TextView) findViewById(R.id.SubOccupancyView) ;    //신청 인원
-                                    TextView SubRate = (TextView) findViewById(R.id.SubRateView) ;              //과목 경쟁률
+                                    titleList.add(document.get("courseTitle").toString());  //과목 명들의 정보를 titleList 배열에 입력
+                                    items =  titleList.toArray(new String[ titleList.size()]); //아이템들의 정보를 배열에 입력
 
-                                    String subName = (String) document.get("courseTitle");
-                                    String subProfessor = (String) document.get("courseProfessor");
-                                    String subOccupancy = (String) document.get("courseOccupancy");
-                                    String subPersonal = (String) document.get("coursePersonal");
+                                    SubName = (TextView) findViewById(R.id.SubNameView) ;              //과목 명
+                                    SubProfessor = (TextView) findViewById(R.id.SubProfessorView) ;    //교수 명
+                                    SubPersonal = (TextView) findViewById(R.id.SubPersonalView) ;      //수강 총원
+                                    SubOccupancy = (TextView) findViewById(R.id.SubOccupancyView) ;    //신청 인원
+                                    SubRate = (TextView) findViewById(R.id.SubRateView) ;              //과목 경쟁률
 
-                                    Double subRate = Double.parseDouble(subOccupancy) / Double.parseDouble(subPersonal);
+                                    SubName.setText(null) ;
+                                    SubProfessor.setText(null);
+                                    SubPersonal.setText(null);
+                                    SubOccupancy.setText(null);
+                                    SubRate.setText(null);
 
-                                    SubName.setText(subName) ;
-                                    SubProfessor.setText(subProfessor);
-                                    SubPersonal.setText(subPersonal);
-                                    SubOccupancy.setText(subOccupancy);
-                                    SubRate.setText("1 : "+ subRate);
+                                    if(titleList.size()>1){
+                                        subName = showSubject();
+                                        startToast("선택 완료 이후\n검색 결과 적용을 눌러주세요.");
+                                    }else{
+                                        subName = (String) document.get("courseTitle");
+                                        subProfessor = (String) document.get("courseProfessor");
+                                        subOccupancy = (String) document.get("courseOccupancy");
+                                        subPersonal = (String) document.get("coursePersonal");
+                                        subRate = Double.parseDouble(subOccupancy) / Double.parseDouble(subPersonal);
 
+
+                                        SubName.setText(subName) ;
+                                        SubProfessor.setText(subProfessor);
+                                        SubPersonal.setText(subPersonal);
+                                        SubOccupancy.setText(subOccupancy);
+                                        SubRate.setText("1 : "+ subRate);
+                                    }
                                 }
                             } else {
                                 startToast("일치하는 결과가 없습니다.");
@@ -195,6 +235,75 @@ public class CompetsubSchActivity extends AppCompatActivity {
         }else startToast("검색할 과목을 입력해주세요.");
 
     }
+
+
+    private void schProtoSub(){
+        getPro = ((EditText)findViewById(R.id.SchSubField)).getText().toString();
+        if(getPro.length() >0 ){
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            final FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+            db.collection("competition")
+                    .whereEqualTo("courseProfessor", getPro)
+                    .whereEqualTo("courseTitle", ProfessorselectSubject)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    SubName = (TextView) findViewById(R.id.SubNameView) ;              //과목 명
+                                    SubProfessor = (TextView) findViewById(R.id.SubProfessorView) ;    //교수 명
+                                    SubPersonal = (TextView) findViewById(R.id.SubPersonalView) ;      //수강 총원
+                                    SubOccupancy = (TextView) findViewById(R.id.SubOccupancyView) ;    //신청 인원
+                                    SubRate = (TextView) findViewById(R.id.SubRateView) ;              //과목 경쟁률
+
+                                    SubName.setText(null) ;
+                                    SubProfessor.setText(null);
+                                    SubPersonal.setText(null);
+                                    SubOccupancy.setText(null);
+                                    SubRate.setText(null);
+
+                                        subName = (String) document.get("courseTitle");
+                                        subProfessor = (String) document.get("courseProfessor");
+                                        subOccupancy = (String) document.get("courseOccupancy");
+                                        subPersonal = (String) document.get("coursePersonal");
+                                        subRate = Double.parseDouble(subOccupancy) / Double.parseDouble(subPersonal);
+
+                                        SubName.setText(subName) ;
+                                        SubProfessor.setText(subProfessor);
+                                        SubPersonal.setText(subPersonal);
+                                        SubOccupancy.setText(subOccupancy);
+                                        SubRate.setText("1 : "+ subRate);
+                                }
+                            } else {
+                                startToast("일치하는 결과가 없습니다.");
+                            }
+                        }
+                    });
+
+
+        }else startToast("검색할 과목을 입력해주세요.");
+
+    }
+
+    String showSubject()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("조회 희망 과목 선택");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int pos) {
+                String selectedText = items[pos].toString();
+                ProfessorselectSubject = selectedText;
+                startToast(selectedText);
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+        return ProfessorselectSubject;
+    }
+
+
 
     private void startToast(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
