@@ -44,8 +44,8 @@ public class CourseActivity extends AppCompatActivity implements CourseAdapter.M
         final TextView courseProfessor = findViewById(R.id.courseProfessor);
         final TextView courseCredit = findViewById(R.id.courseCredit);
         final TextView courseDivide = findViewById(R.id.courseDivide);
-        final TextView coursePersonnel = findViewById(R.id.coursePersonnel);
-        final TextView courseRealPersonnel = findViewById(R.id.courseRealPersonnel);
+        final TextView coursePersonnel = findViewById(R.id.coursePersonal);
+        final TextView courseRealPersonnel = findViewById(R.id.courseRealPersonal);
         final TextView courseTime = findViewById(R.id.courseTime);
         final TextView courseRoom = findViewById(R.id.courseRoom);
 
@@ -66,7 +66,7 @@ public class CourseActivity extends AppCompatActivity implements CourseAdapter.M
                                     String professor = (String) document.get("courseProfessor");
                                     Long credit = (Long) document.get("courseCredit");
                                     Long divide = (Long) document.get("courseDivide");
-                                    Long personnel = (Long) document.get("coursePersonnel");
+                                    Long personnel = (Long) document.get("coursePersonal");
                                     Long realPersonnel = (Long) document.get("courseRealPersonnel");
                                     String time = (String) document.get("courseTime");
                                     String room = (String) document.get("courseRoom");

@@ -92,7 +92,7 @@
                     android:textColor="#FF6347"
                     android:textStyle="bold"/>
                 <TextView
-                    android:id="@+id/coursePersonnel"
+                    android:id="@+id/coursePersonal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="강의 인원"
@@ -102,7 +102,7 @@
                     android:textColor="#FF6347"
                     android:textStyle="bold"/>
                 <TextView
-                    android:id="@+id/courseRealPersonnel"
+                    android:id="@+id/courseRealPersonal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="강의 신청 인원"

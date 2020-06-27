@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder> {
-
+//FirestoreRecyclerAdapter
     private final List<Course> mDataList;
 
     public interface MyRecyclerViewClickListener{
@@ -45,8 +45,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
         holder.courseProfessor.setText(item.getCourseProfessor());
         holder.courseCredit.setText(String.valueOf(item.getCourseCredit()));
         holder.courseDivide.setText(String.valueOf(item.getCourseDivide()));
-        holder.coursePersonnel.setText(String.valueOf(item.getCoursePersonnel()));
-        holder.courseRealPersonnel.setText(String.valueOf(item.getCourseRealPersonnel()));
+        holder.coursePersonal.setText(String.valueOf(item.getCoursePersonnel()));
+        holder.courseRealPersonal.setText(String.valueOf(item.getCourseRealPersonnel()));
         holder.courseTime.setText(item.getCourseTime());
         holder.courseRoom.setText(item.getCourseRoom());
 
@@ -80,8 +80,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
         TextView courseProfessor;
         TextView courseCredit;
         TextView courseDivide;
-        TextView coursePersonnel;
-        TextView courseRealPersonnel;
+        TextView coursePersonal;
+        TextView courseRealPersonal;
         TextView courseTime;
         TextView courseRoom;
 
@@ -94,8 +94,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
             courseProfessor = itemView.findViewById(R.id.courseProfessor);
             courseCredit = itemView.findViewById(R.id.courseCredit);
             courseDivide = itemView.findViewById(R.id.courseDivide);
-            coursePersonnel = itemView.findViewById(R.id.coursePersonnel);
-            courseRealPersonnel = itemView.findViewById(R.id.courseRealPersonnel);
+            coursePersonal = itemView.findViewById(R.id.coursePersonal);
+            courseRealPersonal = itemView.findViewById(R.id.courseRealPersonal);
             courseTime = itemView.findViewById(R.id.courseTime);
             courseRoom = itemView.findViewById(R.id.courseRoom);
         }
