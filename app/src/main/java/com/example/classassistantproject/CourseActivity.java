@@ -3,13 +3,13 @@ package com.example.classassistantproject;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,6 +37,8 @@ public class CourseActivity extends AppCompatActivity implements CourseAdapter.M
         setContentView(R.layout.activity_course);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_View);
+        recyclerView.setLayoutManager(new LinearLayoutManager(CourseActivity.this));
+
         final List<Course> datalist = new ArrayList<>();
 
         final TextView courseGrade = findViewById(R.id.courseGrade);
@@ -49,7 +51,7 @@ public class CourseActivity extends AppCompatActivity implements CourseAdapter.M
         final TextView courseTime = findViewById(R.id.courseTime);
         final TextView courseRoom = findViewById(R.id.courseRoom);
 
-        findViewById(R.id.addButton).setOnClickListener(onClickListener);
+        //findViewById(R.id.addButton).setOnClickListener(onClickListener);
         findViewById(R.id.searchButton).setOnClickListener(onClickListener);
 
         startToast("로딩중...");
@@ -66,11 +68,10 @@ public class CourseActivity extends AppCompatActivity implements CourseAdapter.M
                                     String professor = (String) document.get("courseProfessor");
                                     Long credit = (Long) document.get("courseCredit");
                                     Long divide = (Long) document.get("courseDivide");
-                                    Long personnel = (Long) document.get("coursePersonal");
-                                    Long realPersonnel = (Long) document.get("courseRealPersonnel");
+                                    Long personal = (Long) document.get("coursePersonal");
                                     String time = (String) document.get("courseTime");
                                     String room = (String) document.get("courseRoom");
-                                    datalist.add(new Course(grade, title, credit, divide, personnel, realPersonnel, professor, time, room));
+                                    datalist.add(new Course(grade, title, credit, divide, personal, professor, time, room));
                                     Log.d(TAG, document.getId() + " => " + document.getData());
                                 }
                             } else {

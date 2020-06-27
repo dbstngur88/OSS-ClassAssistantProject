@@ -7,28 +7,29 @@ public class Course {
     //String courseTerm;// 해당 학기
     //String courseArea;   // 강의 영역(교양? 전공?)
     //String courseMajor;         // 해당 학과
+//  Long courseRealPersonal;    // 강의 신청 인원
     String courseGrade;         // 해당 학년
     String courserTitle;        // 강의 제목
     Long courseCredit;           // 강의 학점
     Long courseDivide;           // 강의 분반
     Long coursePersonal;        // 강의 제한 인원
-    Long courseRealPersonal;    // 강의 신청 인원
     String courseProfessor;     // 강의 교수
     String courseTime;          // 강의 시간
     String courseRoom;          // 강의실
 
-    public Course(String courseGrade, String courserTitle, Long courseCredit, Long courseDivide, Long coursePersonnel, Long courseRealPersonnel, String courseProfessor, String courseTime, String courseRoom) {
+    public Course(String courseGrade, String courserTitle, Long courseCredit, Long courseDivide, Long coursePersonnel, String courseProfessor, String courseTime, String courseRoom) {
         //this.courseID = courseID;
         //this.courseYear = courseYear;
         //this.courseTerm = courseTerm;
         //this.courseArea = courseArea;
+//      this.courseRealPersonal = courseRealPersonal;
+
         this.courseGrade = courseGrade;
         //this.courseMajor = courseMajor;
         this.courserTitle = courserTitle;
         this.courseCredit = courseCredit;
         this.courseDivide = courseDivide;
         this.coursePersonal = coursePersonal;
-        this.courseRealPersonal = courseRealPersonal;
         this.courseProfessor = courseProfessor;
         this.courseTime = courseTime;
         this.courseRoom = courseRoom;
@@ -43,7 +44,10 @@ public class Course {
     public String getCourseArea() {return courseArea;}
     public void setCourseArea(String courseArea) {this.courseArea = courseArea;}
     public String getCourseMajor() {return courseMajor;}
-    public void setCourseMajor(String courseMajor) {this.courseMajor = courseMajor;}*/
+    public void setCourseMajor(String courseMajor) {this.courseMajor = courseMajor;}
+    public Long getCourseRealPersonnel() {return courseRealPersonal;}
+    public void setCourseRealPersonnel(Long courseRealPersonnel) {this.courseRealPersonal = courseRealPersonnel;}
+*/
     public String getCourseGrade() {return courseGrade;}
     public void setCourseGrade(String courseGrade) {this.courseGrade = courseGrade;}
     public String getCourserTitle() {return courserTitle;}
@@ -54,8 +58,6 @@ public class Course {
     public void setCourseDivide(Long courseDivide) {this.courseDivide = courseDivide;}
     public Long getCoursePersonnel() {return coursePersonal;}
     public void setCoursePersonnel(Long coursePersonnel) {this.coursePersonal = coursePersonnel;}
-    public Long getCourseRealPersonnel() {return courseRealPersonal;}
-    public void setCourseRealPersonnel(Long courseRealPersonnel) {this.courseRealPersonal = courseRealPersonnel;}
     public String getCourseProfessor() {return courseProfessor;}
     public void setCourseProfessor(String courseProfessor) {this.courseProfessor = courseProfessor;}
     public String getCourseTime() {return courseTime;}
