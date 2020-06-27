@@ -21,7 +21,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * Created by donghwan on 2020.06.06...
+ * 강의정보를 파이어스토어에 저장하기 위한 클래스.
+ */
 public class InsertInfoActivity extends AppCompatActivity {
     Button btn_save;
     FirebaseAuth fAuth;
@@ -51,7 +54,6 @@ public class InsertInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_info);
 
-        //
         btn_save = (Button) findViewById(R.id.btn_save);
         ed_insert_year = (EditText) findViewById(R.id.ed_insert_year);
         ed_insert_term = (EditText) findViewById(R.id.ed_insert_term);
@@ -167,9 +169,9 @@ public class InsertInfoActivity extends AppCompatActivity {
                     return;
                 }
 
+                //파이어스토어에 강의정보 등록
                 Map<String, String> infoMap = new HashMap<>();
                 Map<String, Object> userMap2 = new HashMap<>();
-                //
                 infoMap.put("courseYear", year);
                 infoMap.put("courseTerm", term);
                 infoMap.put("courseUniversity", univ);
@@ -185,7 +187,7 @@ public class InsertInfoActivity extends AppCompatActivity {
                 infoMap.put("courseTime", time);
                 infoMap.put("courseProfessor", prof);
                 infoMap.put("courseRoom", room);
-                infoMap.put("coursePersonnel", psl);
+                infoMap.put("coursePersonal", psl);
 
                 //경쟁률 기능 데이터 추가
                 userMap2.put("courseProfessor", prof);

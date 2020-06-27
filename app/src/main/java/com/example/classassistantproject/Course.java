@@ -11,8 +11,8 @@ public class Course {
     String courserTitle;        // 강의 제목
     Long courseCredit;           // 강의 학점
     Long courseDivide;           // 강의 분반
-    Long coursePersonnel;        // 강의 제한 인원
-    Long courseRealPersonnel;    // 강의 신청 인원
+    Long coursePersonal;        // 강의 제한 인원
+    Long courseRealPersonal;    // 강의 신청 인원
     String courseProfessor;     // 강의 교수
     String courseTime;          // 강의 시간
     String courseRoom;          // 강의실
@@ -27,8 +27,8 @@ public class Course {
         this.courserTitle = courserTitle;
         this.courseCredit = courseCredit;
         this.courseDivide = courseDivide;
-        this.coursePersonnel = coursePersonnel;
-        this.courseRealPersonnel = courseRealPersonnel;
+        this.coursePersonal = coursePersonal;
+        this.courseRealPersonal = courseRealPersonal;
         this.courseProfessor = courseProfessor;
         this.courseTime = courseTime;
         this.courseRoom = courseRoom;
@@ -52,10 +52,10 @@ public class Course {
     public void setCourseCredit(Long courseCredit) {this.courseCredit = courseCredit;}
     public Long getCourseDivide() {return courseDivide;}
     public void setCourseDivide(Long courseDivide) {this.courseDivide = courseDivide;}
-    public Long getCoursePersonnel() {return coursePersonnel;}
-    public void setCoursePersonnel(Long coursePersonnel) {this.coursePersonnel = coursePersonnel;}
-    public Long getCourseRealPersonnel() {return courseRealPersonnel;}
-    public void setCourseRealPersonnel(Long courseRealPersonnel) {this.courseRealPersonnel = courseRealPersonnel;}
+    public Long getCoursePersonnel() {return coursePersonal;}
+    public void setCoursePersonnel(Long coursePersonnel) {this.coursePersonal = coursePersonnel;}
+    public Long getCourseRealPersonnel() {return courseRealPersonal;}
+    public void setCourseRealPersonnel(Long courseRealPersonnel) {this.courseRealPersonal = courseRealPersonnel;}
     public String getCourseProfessor() {return courseProfessor;}
     public void setCourseProfessor(String courseProfessor) {this.courseProfessor = courseProfessor;}
     public String getCourseTime() {return courseTime;}
