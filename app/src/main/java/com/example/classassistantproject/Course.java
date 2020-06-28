@@ -21,7 +21,7 @@ public class Course {
         //
     }
 
-    public Course(String courseGrade, String courserTitle, Long courseCredit, Long courseDivide, Long coursePersonnel, String courseProfessor, String courseTime, String courseRoom) {
+    public Course(String courseGrade, String courserTitle, Long courseCredit, Long courseDivide, Long coursePersonal, String courseProfessor, String courseTime, String courseRoom) {
         //this.courseID = courseID;
         //this.courseYear = courseYear;
         //this.courseTerm = courseTerm;

@@ -46,13 +46,13 @@ public class CourseViewHolder extends RecyclerView.ViewHolder {
         courseProfessorTextView.setText(courseProfessor);
 
         Long courseCredit = course.getCourseCredit();
-        courseCreditTextView.setText((courseCredit) + "");
+        courseCreditTextView.setText((courseCredit) + " ");
 
         Long courseDivide = course.getCourseDivide();
-        courseDivideTextView.setText((courseDivide) + "");
+        courseDivideTextView.setText((courseDivide) + " ");
 
         Long coursePersonal = course.getCoursePersonal();
-        coursePersonalTextView.setText((coursePersonal) + "");
+        coursePersonalTextView.setText((coursePersonal) + " ");
 
         //Long courseRealPersonal = course.getCourseRealPersonal();
         //courseRealPersonalTextView.setText(courseRealPersonal);
