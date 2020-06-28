@@ -66,12 +66,12 @@ public class CourseActivity extends AppCompatActivity implements CourseAdapter.M
                                     String grade = (String) document.get("courseGrade");
                                     String title = (String) document.get("courseTitle");
                                     String professor = (String) document.get("courseProfessor");
-                                    Long credit = (Long) document.get("courseCredit");
-                                    Long divide = (Long) document.get("courseDivide");
-                                    Long personal = (Long) document.get("coursePersonal");
+                                    String credit = (String) document.get("courseCredit");
+                                    String divide = (String) document.get("courseDivide");
+                                    String personal = (String) document.get("coursePersonal");
                                     String time = (String) document.get("courseTime");
                                     String room = (String) document.get("courseRoom");
-                                    datalist.add(new Course(grade, title, credit, divide, personal, professor, time, room));
+                                    //datalist.add(new Course(grade, title, credit, divide, personal, professor, time, room));
                                     Log.d(TAG, document.getId() + " => " + document.getData());
                                 }
                             } else {

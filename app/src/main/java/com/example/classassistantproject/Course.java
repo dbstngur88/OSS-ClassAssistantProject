@@ -10,9 +10,9 @@ public class Course {
 //  Long courseRealPersonal;    // 강의 신청 인원
     String courseGrade;         // 해당 학년
     String courserTitle;        // 강의 제목
-    Long courseCredit;           // 강의 학점
-    Long courseDivide;           // 강의 분반
-    Long coursePersonal;        // 강의 제한 인원
+    String courseCredit;           // 강의 학점
+    String courseDivide;           // 강의 분반
+    String coursePersonal;        // 강의 제한 인원
     String courseProfessor;     // 강의 교수
     String courseTime;          // 강의 시간
     String courseRoom;          // 강의실
@@ -21,15 +21,10 @@ public class Course {
         //
     }
 
-    public Course(String courseGrade, String courserTitle, Long courseCredit, Long courseDivide, Long coursePersonal, String courseProfessor, String courseTime, String courseRoom) {
-        //this.courseID = courseID;
-        //this.courseYear = courseYear;
-        //this.courseTerm = courseTerm;
-        //this.courseArea = courseArea;
-//      this.courseRealPersonal = courseRealPersonal;
+    public Course(String courseGrade, String courserTitle, String courseCredit, String courseDivide, String coursePersonal, String courseProfessor, String courseTime, String courseRoom) {
+
 
         this.courseGrade = courseGrade;
-        //this.courseMajor = courseMajor;
         this.courserTitle = courserTitle;
         this.courseCredit = courseCredit;
         this.courseDivide = courseDivide;
@@ -56,12 +51,12 @@ public class Course {
     public void setCourseGrade(String courseGrade) {this.courseGrade = courseGrade;}
     public String getCourserTitle() {return courserTitle;}
     public void setCourserTitle(String courserTitle) {this.courserTitle = courserTitle;}
-    public Long getCourseCredit() {return courseCredit;}
-    public void setCourseCredit(Long courseCredit) {this.courseCredit = courseCredit;}
-    public Long getCourseDivide() {return courseDivide;}
-    public void setCourseDivide(Long courseDivide) {this.courseDivide = courseDivide;}
-    public Long getCoursePersonal() {return coursePersonal;}
-    public void setCoursePersonal(Long coursePersonal) {this.coursePersonal = coursePersonal;}
+    public String getCourseCredit() {return courseCredit;}
+    public void setCourseCredit(String courseCredit) {this.courseCredit = courseCredit;}
+    public String getCourseDivide() {return courseDivide;}
+    public void setCourseDivide(String courseDivide) {this.courseDivide = courseDivide;}
+    public String getCoursePersonal() {return coursePersonal;}
+    public void setCoursePersonal(String coursePersonal) {this.coursePersonal = coursePersonal;}
     public String getCourseProfessor() {return courseProfessor;}
     public void setCourseProfessor(String courseProfessor) {this.courseProfessor = courseProfessor;}
     public String getCourseTime() {return courseTime;}
