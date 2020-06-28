@@ -38,7 +38,7 @@ public class BasicScreenActivity extends AppCompatActivity {
             switch (v.getId()) {
 
                 case R.id.courseButton:
-                    intent = new Intent(BasicScreenActivity.this, CourseActivity.class);
+                    intent = new Intent(BasicScreenActivity.this, ClassActivity.class);
                     startActivity(intent);
                     break;
 

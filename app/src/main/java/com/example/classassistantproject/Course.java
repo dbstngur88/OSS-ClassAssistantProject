@@ -17,6 +17,10 @@ public class Course {
     String courseTime;          // 강의 시간
     String courseRoom;          // 강의실
 
+    public Course () {
+        //
+    }
+
     public Course(String courseGrade, String courserTitle, Long courseCredit, Long courseDivide, Long coursePersonnel, String courseProfessor, String courseTime, String courseRoom) {
         //this.courseID = courseID;
         //this.courseYear = courseYear;
@@ -56,8 +60,8 @@ public class Course {
     public void setCourseCredit(Long courseCredit) {this.courseCredit = courseCredit;}
     public Long getCourseDivide() {return courseDivide;}
     public void setCourseDivide(Long courseDivide) {this.courseDivide = courseDivide;}
-    public Long getCoursePersonnel() {return coursePersonal;}
-    public void setCoursePersonnel(Long coursePersonnel) {this.coursePersonal = coursePersonnel;}
+    public Long getCoursePersonal() {return coursePersonal;}
+    public void setCoursePersonal(Long coursePersonal) {this.coursePersonal = coursePersonal;}
     public String getCourseProfessor() {return courseProfessor;}
     public void setCourseProfessor(String courseProfessor) {this.courseProfessor = courseProfessor;}
     public String getCourseTime() {return courseTime;}
