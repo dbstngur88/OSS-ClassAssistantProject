@@ -1,0 +1,52 @@
+
+<LinearLayout
+    xmlns:android ="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:textSize="30dp"
+        android:text=" 평점 한줄평 작성"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:rating="5"
+        android:stepSize="0.5"
+        style="?android:attr/ratingBarStyle"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:id = "@+id/rateCount"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:id = "@+id/showRating"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/comment"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:maxLength="50"
+        android:gravity="top"
+        android:padding="30dp"
+        android:textSize="18dp"
+        android:hint="50자 이내로 작성해주세요"
+        android:textCursorDrawable="@color/colorPrimaryDark"/>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="58dp"
+        android:text="저장" />
+</LinearLayout>
