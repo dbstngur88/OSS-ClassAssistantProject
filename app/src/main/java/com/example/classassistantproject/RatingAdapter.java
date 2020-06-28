@@ -34,8 +34,8 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.RatingHold
     @Override
     public void onBindViewHolder(@NonNull RatingAdapter.RatingHolder holder, int i) {
 
-        holder.professor.setText(ratingList.get(i).getProfessor());
-        holder.lecture.setText(ratingList.get(i).getLecture());
+        holder.professor.setText(ratingList.get(i).getCourseProfessor());
+        holder.lecture.setText(ratingList.get(i).getCourseTitle());
     }
 
     @Override

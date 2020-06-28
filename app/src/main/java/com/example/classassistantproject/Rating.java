@@ -1,27 +1,28 @@
 package com.example.classassistantproject;
 
 public class Rating {
-    private String professor;
-    private String lecture;
+    private String CourseProfessor;
+    private String CourseTitle;
 
-    public Rating(String professor, String lecture) {
-        this.professor = professor;
-        this.lecture = lecture;
+    private Rating(){
+    }
+    private Rating(String CourseProfessor, String CourseTitle) {
+        this.CourseProfessor = CourseProfessor;
+        this.CourseTitle = CourseTitle;
+    }
+    public String getCourseProfessor() {
+        return CourseProfessor;
     }
 
-    public String getProfessor() {
-        return professor;
+    public void setCourseProfessor(String courseProfessor) {
+        CourseProfessor = courseProfessor;
     }
 
-    public void setProfessor(String professor) {
-        this.professor = professor;
+    public String getCourseTitle() {
+        return CourseTitle;
     }
 
-    public String getLecture() {
-        return lecture;
-    }
-
-    public void setLecture(String lecture) {
-        this.lecture = lecture;
+    public void setCourseTitle(String courseTitle) {
+        CourseTitle = courseTitle;
     }
 }
