@@ -68,4 +68,6 @@ public class Course {
     public void setCourseTime(String courseTime) {this.courseTime = courseTime;}
     public String getCourseRoom() {return courseRoom;}
     public void setCourseRoom(String courseRoom) {this.courseRoom = courseRoom;}
+
+
 }

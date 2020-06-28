@@ -45,8 +45,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
         holder.courseProfessor.setText(item.getCourseProfessor());
         holder.courseCredit.setText(String.valueOf(item.getCourseCredit()));
         holder.courseDivide.setText(String.valueOf(item.getCourseDivide()));
-        holder.coursePersonal.setText(String.valueOf(item.getCoursePersonnel()));
-        holder.courseRealPersonal.setText(String.valueOf(item.getCourseRealPersonnel()));
+        holder.coursePersonal.setText(String.valueOf(item.getCoursePersonal()));
         holder.courseTime.setText(item.getCourseTime());
         holder.courseRoom.setText(item.getCourseRoom());
 
