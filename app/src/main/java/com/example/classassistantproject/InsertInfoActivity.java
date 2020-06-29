@@ -215,6 +215,7 @@ public class InsertInfoActivity extends AppCompatActivity {
         infoMap.put("courseTime", time);
         infoMap.put("courseProfessor", prof);
         infoMap.put("courseRoom", room);
+        infoMap.put("search", title.toLowerCase());
         infoMap.put("coursePersonal", psl);
 
         //경쟁률 기능 데이터 추가
