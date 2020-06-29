@@ -5,12 +5,6 @@ public class Rating {
 
     private String CourseProfessor;
     private String CourseTitle;
-
-    public Rating(String courseProfessor, String courseTitle) {
-        this.CourseProfessor = courseProfessor;
-        this.CourseTitle = courseTitle;
-    }
-
     public String getCourseProfessor() {
         return CourseProfessor;
     }
@@ -26,4 +20,13 @@ public class Rating {
     public void setCourseTitle(String courseTitle) {
         CourseTitle = courseTitle;
     }
+    public Rating () {
+        //빈 생성자 필요...
+    }
+
+    public Rating(String Title, String Professor){
+        this.CourseTitle = Title;
+        this.CourseProfessor = Professor;
+    }
+
 }

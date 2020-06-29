@@ -21,13 +21,15 @@
             android:layout_gravity="center"
             android:entries="@array/year"
             android:layout_marginLeft="10dp"/>
+
         <Spinner
             android:id="@+id/termSpinner"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:entries="@array/term"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:entries="@array/term" />
+
         <Spinner
             android:id="@+id/areaSpinner"
             android:layout_width="130dp"
