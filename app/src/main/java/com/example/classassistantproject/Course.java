@@ -9,7 +9,7 @@ public class Course {
     //String courseMajor;         // 해당 학과
 //  Long courseRealPersonal;    // 강의 신청 인원
     String courseGrade;         // 해당 학년
-    String courserTitle;        // 강의 제목
+    String courseTitle;        // 강의 제목
     String courseCredit;           // 강의 학점
     String courseDivide;           // 강의 분반
     String coursePersonal;        // 강의 제한 인원
@@ -21,9 +21,9 @@ public class Course {
         //빈 생성자 필요...
     }
 
-    public Course(String courseGrade, String courserTitle, String courseCredit, String courseDivide, String coursePersonal, String courseProfessor, String courseTime, String courseRoom) {
+    public Course(String courseGrade, String courseTitle, String courseCredit, String courseDivide, String coursePersonal, String courseProfessor, String courseTime, String courseRoom) {
         this.courseGrade = courseGrade;
-        this.courserTitle = courserTitle;
+        this.courseTitle = courseTitle;
         this.courseCredit = courseCredit;
         this.courseDivide = courseDivide;
         this.coursePersonal = coursePersonal;
@@ -40,12 +40,12 @@ public class Course {
         this.courseGrade = courseGrade;
     }
 
-    public String getCourserTitle() {
-        return courserTitle;
+    public String getCourseTitle() {
+        return courseTitle;
     }
 
-    public void setCourserTitle(String courserTitle) {
-        this.courserTitle = courserTitle;
+    public void setCourseTitle(String courseTitle) {
+        this.courseTitle = courseTitle;
     }
 
     public String getCourseCredit() {
