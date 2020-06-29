@@ -86,4 +86,9 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
     public int getItemCount() {
         return datalist.size();
     }
+
+    public void filterList(List<Course> filterdList) {
+        datalist = filterdList;
+        notifyDataSetChanged();
+    }
 }

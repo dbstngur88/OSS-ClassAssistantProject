@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -91,6 +93,34 @@ public class ClassActivity extends AppCompatActivity {
         //검색 버튼 활성화(Action Listener 설치)
         findViewById(R.id.searchButton).setOnClickListener(onClickListener);
 
+        EditText editText = findViewById(R.id.majorText);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+    }
+
+    private void filter(String text) {
+        List<Course> filteredList = new ArrayList<>();
+
+        for (Course course : dataList) {
+            if (course.getCourseTitle().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(course);
+            }
+        }
+        adapter.filterList(filteredList);
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener(){
@@ -109,19 +139,23 @@ public class ClassActivity extends AppCompatActivity {
                 case R.id.addButton:
 
                     String title = courseTitle.getText().toString().trim(); //교과목명
-                String time = courseTime.getText().toString().trim(); //강의시간
-                String professor = courseProfessor.getText().toString().trim(); //담당교수
-                String room = courseRoom.getText().toString().trim(); //강의실
+                    String time = courseTime.getText().toString().trim(); //강의시간
+                    String professor = courseProfessor.getText().toString().trim(); //담당교수
+                    String room = courseRoom.getText().toString().trim(); //강의실
 
-                //function call to upload data
-                uploadData( time, title, professor, room);
-                break;
+                    //function call to upload data
+                    uploadData( time, title, professor, room);
+                    break;
 
             }
         }
     };
 
     private void SearchWithSub(){
+
+        pd.setTitle("검색중...");
+        pd.show();
+
         String getSubName = ((EditText)findViewById(R.id.majorText)).getText().toString();
         mRecyclerView.setAdapter(adapter);
         dataList.removeAll(dataList);
@@ -166,7 +200,7 @@ public class ClassActivity extends AppCompatActivity {
 
         pd = new ProgressDialog(this);
 
-        pd.setTitle("검색중...");
+        pd.setTitle("전체강의 로딩중...");
         pd.show();
 
         db.collection("elective")
@@ -256,5 +290,7 @@ public class ClassActivity extends AppCompatActivity {
     private void startToast(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
     }
+
+
 
 }
