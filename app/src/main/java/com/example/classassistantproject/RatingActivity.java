@@ -127,28 +127,11 @@ public class RatingActivity extends AppCompatActivity  {
                                     recyclerView.setAdapter(adapter);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            pd.dismiss();
 
-<<<<<<< Updated upstream
-=======
-                            for (DocumentSnapshot doc : task.getResult()) {
-                                Rating rating = new Rating (
-                                doc.getString("CourseTitle"),
-                                doc.getString("CourseProfessor"));
-                                ratingList.add(rating);
-
-                            }
-                            adapter = new RatingAdapter(RatingActivity.this, ratingList, context);
-                            recyclerView.setAdapter(adapter);
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     pd.dismiss();
 
->>>>>>> Stashed changes
                     Toast.makeText(RatingActivity.this, e.getMessage(),
                             Toast.LENGTH_SHORT).show();
 
