@@ -62,7 +62,7 @@ public class RatingActivity extends AppCompatActivity  {
             switch(v.getId()){
                 case R.id.SearchBtn:
                     String getProName = ((EditText)findViewById(R.id.SchProfessorField)).getText().toString();
-                    if(getProName == ""){
+                    if(getProName == null){
                         startToast("교수명을 입력하세요.");
                     }else {
                         SearchWithPro();
@@ -127,10 +127,19 @@ public class RatingActivity extends AppCompatActivity  {
                                     recyclerView.setAdapter(adapter);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            pd.dismiss();
+                            pd.dismiss();
 
+                            Toast.makeText(RatingActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     pd.dismiss();
+
 
                     Toast.makeText(RatingActivity.this, e.getMessage(),
                             Toast.LENGTH_SHORT).show();
