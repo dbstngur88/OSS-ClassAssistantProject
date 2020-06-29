@@ -30,7 +30,7 @@ public class RatingActivity extends AppCompatActivity  {
     private RecyclerView recyclerView;
     private Context context;
     private RecyclerView.LayoutManager layoutManager;
-    RatingAdapter adapter; //RatingAdapter 인스턴스
+    private RatingAdapter adapter; //RatingAdapter 인스턴스
     private ProgressDialog pd;
 
 
@@ -46,6 +46,7 @@ public class RatingActivity extends AppCompatActivity  {
         firebaseFirestore = FirebaseFirestore.getInstance();
 
         recyclerView = findViewById(R.id.recycleview);
+
         recyclerView.setHasFixedSize(true);
         adapter = new RatingAdapter(RatingActivity.this, ratingList, context);
 
@@ -130,6 +131,24 @@ public class RatingActivity extends AppCompatActivity  {
                         public void onFailure(@NonNull Exception e) {
                             pd.dismiss();
 
+<<<<<<< Updated upstream
+=======
+                            for (DocumentSnapshot doc : task.getResult()) {
+                                Rating rating = new Rating (
+                                doc.getString("CourseTitle"),
+                                doc.getString("CourseProfessor"));
+                                ratingList.add(rating);
+
+                            }
+                            adapter = new RatingAdapter(RatingActivity.this, ratingList, context);
+                            recyclerView.setAdapter(adapter);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    pd.dismiss();
+
+>>>>>>> Stashed changes
                     Toast.makeText(RatingActivity.this, e.getMessage(),
                             Toast.LENGTH_SHORT).show();
 

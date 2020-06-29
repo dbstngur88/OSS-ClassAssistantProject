@@ -6,6 +6,15 @@ public class Rating {
     private String CourseProfessor;
     private String CourseTitle;
 
+<<<<<<< Updated upstream
+=======
+    private Rating(){
+    }
+    Rating(String CourseProfessor, String CourseTitle) {
+        this.CourseProfessor = CourseProfessor;
+        this.CourseTitle = CourseTitle;
+    }
+>>>>>>> Stashed changes
     public String getCourseProfessor() {
         return CourseProfessor;
     }
