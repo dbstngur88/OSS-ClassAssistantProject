@@ -1,9 +1,11 @@
 package com.example.classassistantproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingViewHolder> {
     RatingActivity ratingActivity;
     List<Rating> ratingList;
     Context context;
+    RatingBar ratingBar;
     public RatingAdapter(RatingActivity ratingActivity, List<Rating> ratingList, Context context) {
         this.ratingActivity = ratingActivity;
         this.ratingList = ratingList;
@@ -38,6 +41,10 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingViewHolder> {
                 String professor = ratingList.get(position).getCourseProfessor();
                 Toast.makeText(ratingActivity, title + "\n" + professor,
                         Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ratingActivity, CommentWriteActivity.class);
+                ratingActivity.startActivity(intent);
+
+
             }
 
             @Override
