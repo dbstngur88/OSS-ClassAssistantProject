@@ -60,7 +60,7 @@ public class InsertInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_info);
 
-        //activity_insert_info.sml의 View들 활성화
+        //activity_insert_info.xml의 View들 활성화
         btn_save = (Button) findViewById(R.id.btn_save);
         ed_insert_year = (EditText) findViewById(R.id.ed_insert_year);
         ed_insert_term = (EditText) findViewById(R.id.ed_insert_term);

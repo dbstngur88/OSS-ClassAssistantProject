@@ -7,61 +7,68 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class CourseViewHolder extends RecyclerView.ViewHolder {
-    //private TextView addButton;
-    private TextView courseGradeTextView;
-    private TextView courseTitleTextView;
-    private TextView courseProfessorTextView;
-    private TextView courseCreditTextView;
-    private TextView courseDivideTextView;
-    private TextView coursePersonalTextView;
-    //private TextView courseRealPersonaTextView;
-    private TextView courseTimeTextView;
-    private TextView courseRoomTextView;
+/**
+ * created by donghwan from 2020.06.29...
+ */
 
+public class CourseViewHolder extends RecyclerView.ViewHolder {
+    //TextView addButton;
+   TextView courseGradeTextView;
+   TextView courseTitleTextView;
+   TextView courseProfessorTextView;
+   TextView courseCreditTextView;
+   TextView courseDivideTextView;
+   TextView coursePersonalTextView;
+   //TextView courseRealPersonalTextView;
+   TextView courseTimeTextView;
+   TextView courseRoomTextView;
+
+    private  CourseViewHolder.ClickListener mClickListener;
+
+    View mView;
 
     public CourseViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        //addButton = itemView.findViewById(R.id.addButton);
-        courseGradeTextView = itemView.findViewById(R.id.courseGrade);
-        courseTitleTextView = itemView.findViewById(R.id.courseTitle);
-        courseProfessorTextView = itemView.findViewById(R.id.courseProfessor);
-        courseCreditTextView = itemView.findViewById(R.id.courseCredit);
-        courseDivideTextView = itemView.findViewById(R.id.courseDivide);
-        coursePersonalTextView = itemView.findViewById(R.id.coursePersonal);
-        //courseRealPersonaTextView = itemView.findViewById(R.id.courseRealPersonal);
-        courseTimeTextView = itemView.findViewById(R.id.courseTime);
-        courseRoomTextView = itemView.findViewById(R.id.courseRoom);
+        mView = itemView;
+
+        //item click listener
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mClickListener.onItemClick(v, getAdapterPosition());
+            }
+        });
+
+        //item long click listener
+        itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mClickListener.onItemLongClick(v, getAdapterPosition());
+                return true;
+            }
+        });
+
+        //course.xml에 view들 활성화
+       // courseGradeTextView = itemView.findViewById(R.id.ed_insert_grade);
+        courseTitleTextView = itemView.findViewById(R.id.ed_insert_title);
+        courseProfessorTextView = itemView.findViewById(R.id.ed_insert_prof);
+        courseCreditTextView = itemView.findViewById(R.id.ed_insert_credit);
+        courseDivideTextView = itemView.findViewById(R.id.ed_insert_div);
+
+        coursePersonalTextView = itemView.findViewById(R.id.ed_insert_psl);
+        //courseRealPersonalTextView = itemView.findViewById(R.id.ed_insert_rpsl);
+        courseTimeTextView = itemView.findViewById(R.id.ed_insert_time);
+        courseRoomTextView = itemView.findViewById(R.id.ed_insert_room);
     }
 
-    public void setCourseList (Context context, Course course) {
-        String courseGrade = course.getCourseGrade();
-        courseGradeTextView.setText(courseGrade);
+    //interface fo click listener
+    public  interface ClickListener {
+        void onItemClick(View view, int position);
+        void onItemLongClick(View view, int position);
+    }
 
-        String courseTitle = course.getCourserTitle();
-        courseTitleTextView.setText(courseTitle);
-
-        String courseProfessor = course.getCourseProfessor();
-        courseProfessorTextView.setText(courseProfessor);
-
-        String courseCredit = course.getCourseCredit();
-        courseCreditTextView.setText((courseCredit) + " ");
-
-        String courseDivide = course.getCourseDivide();
-        courseDivideTextView.setText((courseDivide) + " ");
-
-        String coursePersonal = course.getCoursePersonal();
-        coursePersonalTextView.setText((coursePersonal) + " ");
-
-        //Long courseRealPersonal = course.getCourseRealPersonal();
-        //courseRealPersonalTextView.setText(courseRealPersonal);
-
-        String courseTime = course.getCourseTime();
-        courseTimeTextView.setText(courseTime);
-
-        String courseRoom = course.getCourseRoom();
-        courseRoomTextView.setText(courseRoom);
-
+    public  void setOnClickListener(CourseViewHolder.ClickListener clickListener) {
+        mClickListener = clickListener;
     }
 }

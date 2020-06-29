@@ -1,5 +1,7 @@
 package com.example.classassistantproject;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.LayoutInflater;
@@ -7,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,86 +19,100 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * created by donghwan from 2020.06.29...
+ */
 
 public class ClassActivity extends AppCompatActivity {
-    private FirebaseAuth firebaseAuth;
-    private FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
-    private CollectionReference courseRef = rootRef.collection("elective");
-    //private FirebaseAuth.AuthStateListener.authStateListener;
 
-    private FirestoreRecyclerAdapter<Course, CourseViewHolder> firestoreRecyclerAdapter;
+    List<Course> dataList = new ArrayList<>();
+    RecyclerView mRecyclerView;
+    Context context;
 
+    //layout manager for recyclerview
+    RecyclerView.LayoutManager layoutManager;
+
+    FirebaseFirestore db; //파이어베이스 인스턴
+    CourseAdapter adapter; //CourseAdapter 인스턴스스
+    ProgressDialog pd;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
 
-        final RecyclerView recyclerView = findViewById(R.id.recycler_View);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        final TextView emptyView = findViewById(R.id.empty_view);
-        final ProgressBar progressBar = findViewById(R.id.progress_bar);
+        //파이어베이스 초기화
+        db = FirebaseFirestore.getInstance();
 
-        Query query = courseRef.orderBy("courseTitle", Query.Direction.ASCENDING);
+        //view 활성화
+        mRecyclerView = findViewById(R.id.recycler_View);
 
-        FirestoreRecyclerOptions<Course> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Course>()
-                .setQuery(query, Course.class)
-                .build();
+        //set recyclerview properties
+        mRecyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(layoutManager);
 
-        firestoreRecyclerAdapter =
-                new FirestoreRecyclerAdapter<Course, CourseViewHolder>(firestoreRecyclerOptions) {
-                    @Override
-                    protected void onBindViewHolder(@NonNull CourseViewHolder holder, int position, @NonNull Course model) {
-                        holder.setCourseList(getApplicationContext(), model);
-                    }
-
-                    @NonNull
-                    @Override
-                    public CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.course, parent, false);
-                        return new CourseViewHolder(view);
-                    }
-
-                    @Override
-                    public void onDataChanged() {
-                        if (progressBar != null) {
-                            progressBar.setVisibility(View.GONE);
-                        }
-
-                        if (getItemCount() == 0) {
-                            recyclerView.setVisibility(View.GONE);
-                        } else {
-                            recyclerView.setVisibility(View.VISIBLE);
-                            emptyView.setVisibility(View.GONE);
-                        }
-                    }
-
-                    @Override
-                    public int getItemCount() {
-                        return super.getItemCount();
-                    }
-                };
-
-        recyclerView.setAdapter(firestoreRecyclerAdapter);
+        //show data in recyclerview
+        showData();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        firestoreRecyclerAdapter.startListening();
-    }
+    private void showData() {
 
-    @Override
-    protected void onStop() {
-        super.onStop();
+        pd = new ProgressDialog(this);
 
-        if (firestoreRecyclerAdapter != null) {
-            firestoreRecyclerAdapter.stopListening();
-        }
+        pd.setTitle("검색중...");
+        pd.show();
 
+        db.collection("elective")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                //called when data is retrived
+                  pd.dismiss();
+
+                //show data
+                for (DocumentSnapshot doc : task.getResult()) {
+                    Course course = new Course (
+                        doc.getString("courseGrade"),
+                        doc.getString("courserTitle"),
+                        doc.getString("courseCredit"),
+                        doc.getString("courseDivide"),
+                        doc.getString("coursePersonal"),
+                        doc.getString("courseProfessor"),
+                        doc.getString("courseTime"),
+                        doc.getString("courseRoom"));
+                        dataList.add(course);
+                    }
+
+                //adapter
+                adapter = new CourseAdapter(ClassActivity.this, dataList, context);
+                //set adapter to recyclerview
+                mRecyclerView.setAdapter(adapter);
+                }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //called when there is any error while retriving
+                        pd.dismiss();
+
+                        Toast.makeText(ClassActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
     }
 }

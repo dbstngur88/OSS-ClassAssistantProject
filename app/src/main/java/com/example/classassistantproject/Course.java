@@ -18,12 +18,10 @@ public class Course {
     String courseRoom;          // 강의실
 
     public Course () {
-        //
+        //빈 생성자 필요...
     }
 
     public Course(String courseGrade, String courserTitle, String courseCredit, String courseDivide, String coursePersonal, String courseProfessor, String courseTime, String courseRoom) {
-
-
         this.courseGrade = courseGrade;
         this.courserTitle = courserTitle;
         this.courseCredit = courseCredit;
@@ -34,35 +32,67 @@ public class Course {
         this.courseRoom = courseRoom;
     }
 
-    /*public Long getCourseID() { return courseID;}
-    public void setCourseID(Long courseID) {this.courseID = courseID;}
-    public Long getCourseYear() {return courseYear;}
-    public void setCourseYear(Long courseYear) {this.courseYear = courseYear;}
-    public String getCourseTerm() {return courseTerm;}
-    public void setCourseTerm(String courseTerm) {this.courseTerm = courseTerm;}
-    public String getCourseArea() {return courseArea;}
-    public void setCourseArea(String courseArea) {this.courseArea = courseArea;}
-    public String getCourseMajor() {return courseMajor;}
-    public void setCourseMajor(String courseMajor) {this.courseMajor = courseMajor;}
-    public Long getCourseRealPersonnel() {return courseRealPersonal;}
-    public void setCourseRealPersonnel(Long courseRealPersonnel) {this.courseRealPersonal = courseRealPersonnel;}
-*/
-    public String getCourseGrade() {return courseGrade;}
-    public void setCourseGrade(String courseGrade) {this.courseGrade = courseGrade;}
-    public String getCourserTitle() {return courserTitle;}
-    public void setCourserTitle(String courserTitle) {this.courserTitle = courserTitle;}
-    public String getCourseCredit() {return courseCredit;}
-    public void setCourseCredit(String courseCredit) {this.courseCredit = courseCredit;}
-    public String getCourseDivide() {return courseDivide;}
-    public void setCourseDivide(String courseDivide) {this.courseDivide = courseDivide;}
-    public String getCoursePersonal() {return coursePersonal;}
-    public void setCoursePersonal(String coursePersonal) {this.coursePersonal = coursePersonal;}
-    public String getCourseProfessor() {return courseProfessor;}
-    public void setCourseProfessor(String courseProfessor) {this.courseProfessor = courseProfessor;}
-    public String getCourseTime() {return courseTime;}
-    public void setCourseTime(String courseTime) {this.courseTime = courseTime;}
-    public String getCourseRoom() {return courseRoom;}
-    public void setCourseRoom(String courseRoom) {this.courseRoom = courseRoom;}
+    public String getCourseGrade() {
+        return courseGrade;
+    }
 
+    public void setCourseGrade(String courseGrade) {
+        this.courseGrade = courseGrade;
+    }
 
+    public String getCourserTitle() {
+        return courserTitle;
+    }
+
+    public void setCourserTitle(String courserTitle) {
+        this.courserTitle = courserTitle;
+    }
+
+    public String getCourseCredit() {
+        return courseCredit;
+    }
+
+    public void setCourseCredit(String courseCredit) {
+        this.courseCredit = courseCredit;
+    }
+
+    public String getCourseDivide() {
+        return courseDivide;
+    }
+
+    public void setCourseDivide(String courseDivide) {
+        this.courseDivide = courseDivide;
+    }
+
+    public String getCoursePersonal() {
+        return coursePersonal;
+    }
+
+    public void setCoursePersonal(String coursePersonal) {
+        this.coursePersonal = coursePersonal;
+    }
+
+    public String getCourseProfessor() {
+        return courseProfessor;
+    }
+
+    public void setCourseProfessor(String courseProfessor) {
+        this.courseProfessor = courseProfessor;
+    }
+
+    public String getCourseTime() {
+        return courseTime;
+    }
+
+    public void setCourseTime(String courseTime) {
+        this.courseTime = courseTime;
+    }
+
+    public String getCourseRoom() {
+        return courseRoom;
+    }
+
+    public void setCourseRoom(String courseRoom) {
+        this.courseRoom = courseRoom;
+    }
 }

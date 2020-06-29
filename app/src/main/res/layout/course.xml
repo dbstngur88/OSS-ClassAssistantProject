@@ -1,127 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="#fff"
+    app:contentPadding="5dp"
+    app:cardCornerRadius="3dp"
+    android:elevation="3dp"
+    app:cardUseCompatPadding="true">
 
+    <LinearLayout
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp">
         <LinearLayout
-            android:layout_width="310dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="5dp">
-            <LinearLayout
-                android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:background="@drawable/style_login">
+            <TextView
+                android:id="@+id/courseGrade"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/style_login">
-                <TextView
-                    android:id="@+id/courseGrade"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1학년"
-                    android:layout_gravity="center"
-                    android:padding="3dp"
-                    android:textColor="#FF6347"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/courseTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="강의 제목"
-                    android:layout_gravity="center"
-                    android:padding="3dp"
-                    android:textColor="#FF6347"
-                    android:textStyle="bold"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:text="1학년"
+                android:layout_gravity="center"
+                android:padding="3dp"
+                android:textColor="#FF6347"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/courseTitle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="#ffffff">
-                <TextView
-                    android:id="@+id/courseProfessor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="교수님 이름"
-                    android:layout_gravity="center"
-                    android:padding="3dp"
-                    android:textColor="#000000"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/courseCredit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3학점"
-                    android:layout_gravity="center"
-                    android:padding="3dp"
-                    android:textColor="#000000"/>
-                <TextView
-                    android:id="@+id/courseDivide"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="11분반"
-                    android:layout_gravity="center"
-                    android:padding="3dp"
-                    android:textColor="#000000"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/style_pw">
-                <TextView
-                    android:id="@+id/courseTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="강의 시간"
-                    android:layout_gravity="center"
-                    android:padding="3dp"
-                    android:layout_marginRight="8dp"
-                    android:textColor="#FF6347"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/courseRoom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="강의실"
-                    android:layout_gravity="center"
-                    android:padding="3dp"
-                    android:layout_marginRight="8dp"
-                    android:textColor="#FF6347"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/coursePersonal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="강의 인원"
-                    android:layout_gravity="center"
-                    android:padding="3dp"
-                    android:layout_marginRight="8dp"
-                    android:textColor="#FF6347"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/courseRealPersonal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="강의 신청 인원"
-                    android:layout_gravity="center"
-                    android:padding="3dp"
-                    android:textColor="#FF6347"
-                    android:textStyle="bold"/>
-            </LinearLayout>
+                android:text="강의 제목"
+                android:layout_gravity="center"
+                android:padding="3dp"
+                android:textColor="#FF6347"
+                android:textStyle="bold"/>
         </LinearLayout>
-        <Button
-            android:id="@+id/addButton"
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="추가"
-            android:background="@drawable/style_button"
-            android:textColor="#FF6347"
-            android:textSize="18dp"
-            android:layout_marginRight="23dp"
-            android:layout_marginLeft="3dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#ffffff">
+            <TextView
+                android:id="@+id/courseProfessor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="교수님 이름"
+                android:layout_gravity="center"
+                android:padding="3dp"
+                android:textColor="#000000"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/courseCredit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3학점"
+                android:layout_gravity="center"
+                android:padding="3dp"
+                android:textColor="#000000"/>
+            <TextView
+                android:id="@+id/courseDivide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11분반"
+                android:layout_gravity="center"
+                android:padding="3dp"
+                android:textColor="#000000"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/style_pw">
+            <TextView
+                android:id="@+id/courseTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="강의 시간"
+                android:layout_gravity="center"
+                android:padding="3dp"
+                android:layout_marginRight="8dp"
+                android:textColor="#FF6347"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/courseRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="강의실"
+                android:layout_gravity="center"
+                android:padding="3dp"
+                android:layout_marginRight="8dp"
+                android:textColor="#FF6347"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/coursePersonal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="강의 인원"
+                android:layout_gravity="center"
+                android:padding="3dp"
+                android:layout_marginRight="8dp"
+                android:textColor="#FF6347"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/courseRealPersonal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="강의 신청 인원"
+                android:layout_gravity="center"
+                android:padding="3dp"
+                android:textColor="#FF6347"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </LinearLayout>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="80dp"
+        android:layout_height="17dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="180dp"
+        android:layout_marginRight="23dp"
+        android:background="@drawable/style_button"
+        android:gravity="center"
+        android:text="추가"
+        android:textColor="#FF6347"
+        android:textSize="18dp" />
+
+</androidx.cardview.widget.CardView>
