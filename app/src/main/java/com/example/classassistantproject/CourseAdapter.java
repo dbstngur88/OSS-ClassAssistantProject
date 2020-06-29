@@ -42,18 +42,21 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
         courseViewHolder.setOnClickListener(new CourseViewHolder.ClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                //사용자가 아이템을 클릭할 때 동작
+                /**
+                 * 사용자가 아이템을(해당강의칸) 클릭할 때 동작
+                 * 누르면 해당정보 출력
+                 */
 
                 //show data in toast in clicking
                 String grade = datalist.get(position).getCourseGrade();
-                String title = datalist.get(position).getCourserTitle();
+                String title = datalist.get(position).getCourseTitle();
                 String credit = datalist.get(position).getCourseCredit();
                 String divide = datalist.get(position).getCourseDivide();
                 String personal = datalist.get(position).getCoursePersonal();
                 String professor = datalist.get(position).getCourseProfessor();
                 String time = datalist.get(position).getCourseTime();
                 String room = datalist.get(position).getCourseRoom();
-                Toast.makeText(classActivity, grade + "\n" + title + "\n" + credit + "\n" + divide + "\n" + personal + "\n" + professor + "\n" + time + "\n" + room + "\n", Toast.LENGTH_SHORT).show();
+                Toast.makeText(classActivity, title + "\n" + grade + "\n" + credit + "\n" + divide + "\n" + personal + "\n" + professor + "\n" + time + "\n" + room + "\n", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -70,7 +73,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
         //position에 해당하는 데이터를 아이템뷰에 표시
         //Course item = datalist.get(position);
         courseViewHolder.courseGradeTextView.setText(datalist.get(position).getCourseGrade());
-        courseViewHolder.courseTitleTextView.setText(datalist.get(position).getCourserTitle());
+        courseViewHolder.courseTitleTextView.setText(datalist.get(position).getCourseTitle());
         courseViewHolder.courseCreditTextView.setText(datalist.get(position).getCourseCredit());
         courseViewHolder.courseDivideTextView.setText(datalist.get(position).getCourseDivide());
         courseViewHolder.coursePersonalTextView.setText(datalist.get(position).getCoursePersonal());
