@@ -77,7 +77,7 @@ public class LectureActivity extends AppCompatActivity {
         fri[8] = findViewById(R.id.friday8);
         fri[9] = findViewById(R.id.friday9);
 
-        String time = "수:[1][2][3]";
+        String time = "월:[1]수:[1][2]";
         String title = "컴퓨터 네트워크";
         String professor = "김봉재";
         String room = "인문405";

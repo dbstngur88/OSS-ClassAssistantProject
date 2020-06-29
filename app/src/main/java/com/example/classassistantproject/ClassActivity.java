@@ -3,6 +3,10 @@ package com.example.classassistantproject;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -13,13 +17,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * created by donghwan from 2020.06.29...
@@ -37,11 +49,26 @@ public class ClassActivity extends AppCompatActivity {
     FirebaseFirestore db; //파이어베이스 인스턴
     CourseAdapter adapter; //CourseAdapter 인스턴스스
     ProgressDialog pd;
+    FirebaseUser mUser;   // 파이어베이스 user 확인할 변수
+
+    Button addButton;
+    TextView courseTime;
+    TextView courseTitle;
+    TextView courseProfessor;
+    TextView courseRoom;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
+
+        addButton = findViewById(R.id.addButton);
+        courseTime = findViewById(R.id.courseTime);
+        courseTitle = findViewById(R.id.courseTitle);
+        courseProfessor = findViewById(R.id.courseProfessor);
+        courseRoom = findViewById(R.id.courseRoom);
+
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
 
         //파이어베이스 초기화
         db = FirebaseFirestore.getInstance();
@@ -57,6 +84,22 @@ public class ClassActivity extends AppCompatActivity {
         //show data in recyclerview
         showData();
     }
+
+    View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.addButton:
+                            String title = courseTitle.getText().toString().trim(); //교과목명
+                            String time = courseTime.getText().toString().trim(); //강의시간
+                            String professor = courseProfessor.getText().toString().trim(); //담당교수
+                            String room = courseRoom.getText().toString().trim(); //강의실
+
+                            //function call to upload data
+                            uploadData( time, title, professor, room);
+            }
+        }
+    };
 
     private void showData() {
 
@@ -103,5 +146,49 @@ public class ClassActivity extends AppCompatActivity {
 
                     }
                 });
-    }
+    }//showdata()
+
+    //파이어스토어에 강의정보를 올려주는 메소드
+    private void uploadData(String time, String title, String professor, String room) {
+
+        final String id = UUID.randomUUID().toString();
+
+
+        //강의정보 해쉬맵
+        final Map<String, Object> lectureMap = new HashMap<>();
+        lectureMap.put("courseProfessor", time);
+        lectureMap.put("courseTitle", title);
+        lectureMap.put("coursePersonal", professor);
+        lectureMap.put("coursRoom", room);
+
+        //해당 유저 이메일 확인후 본인만의 myLecture 생성 후 강의 추가
+        mUser.getIdToken(true)
+                .addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
+                    public void onComplete(@NonNull Task<GetTokenResult> task) {
+                        if (task.isSuccessful()) {
+                            String idToken = task.getResult().getToken();
+                            if(db.collection("myLecture").document(idToken) == null) {
+                                // 현재 id로 만들어진 document가 없을때
+                                db.collection("myLecture").document(idToken).set(lectureMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(ClassActivity.this, "로딩 성공!", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.d("error", e.getMessage());
+                                        Toast.makeText(ClassActivity.this, "로딩 실패, 오류 발생", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }else{
+
+                            }
+                        } else {
+                            task.getException();
+                        }
+                    }
+                });
+    }//updata()
 }
