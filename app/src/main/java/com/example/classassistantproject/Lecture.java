@@ -2,6 +2,7 @@ package com.example.classassistantproject;
 
 import android.content.Context;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Lecture {
     //강의를 등록했을때 강의시간이 겹치는 것을 확인
@@ -108,7 +109,8 @@ public class Lecture {
         }
     }   //addlecture()
 
-    public void addlecture(String lectureChoice, String courseTitle, String courseProfessor){
+
+    public void addlecture(String lectureChoice, String courseTitle, String courseProfessor, String courseRoom){
         String professor;
         if(courseProfessor.equals("")) {
             professor = "";
@@ -131,7 +133,7 @@ public class Lecture {
                 }
                 if(lectureChoice.charAt(i) == ']'){
                     backPoint = i;
-                    mon[Integer.parseInt(lectureChoice.substring(frontPoint +1, backPoint))] = courseTitle + professor;   //넣을 데이터의 교시가 들어감.
+                    mon[Integer.parseInt(lectureChoice.substring(frontPoint +1, backPoint))] = courseTitle + "\n"  + professor + "\n" +courseRoom;   //넣을 데이터의 교시가 들어감.
                 }
             }
         }
@@ -147,7 +149,7 @@ public class Lecture {
                 }
                 if(lectureChoice.charAt(i) == ']'){
                     backPoint = i;
-                    tue[Integer.parseInt(lectureChoice.substring(frontPoint +1, backPoint))] = courseTitle + professor;   //넣을 데이터의 교시가 들어감.
+                    tue[Integer.parseInt(lectureChoice.substring(frontPoint +1, backPoint))] = courseTitle + "\n"  + professor + "\n" +courseRoom;   //넣을 데이터의 교시가 들어감.
                 }
             }
         }
@@ -163,7 +165,7 @@ public class Lecture {
                 }
                 if(lectureChoice.charAt(i) == ']'){
                     backPoint = i;
-                    wed[Integer.parseInt(lectureChoice.substring(frontPoint +1, backPoint))] = courseTitle + professor;   //넣을 데이터의 교시가 들어감.
+                    wed[Integer.parseInt(lectureChoice.substring(frontPoint +1, backPoint))] = courseTitle + "\n"  + professor + "\n" +courseRoom;   //넣을 데이터의 교시가 들어감.
                 }
             }
         }
@@ -179,7 +181,7 @@ public class Lecture {
                 }
                 if(lectureChoice.charAt(i) == ']'){
                     backPoint = i;
-                    thu[Integer.parseInt(lectureChoice.substring(frontPoint +1, backPoint))] = courseTitle + professor;   //넣을 데이터의 교시가 들어감.
+                    thu[Integer.parseInt(lectureChoice.substring(frontPoint +1, backPoint))] = courseTitle + "\n"  + professor + "\n" +courseRoom;   //넣을 데이터의 교시가 들어감.
                 }
             }
         }
@@ -195,7 +197,7 @@ public class Lecture {
                 }
                 if(lectureChoice.charAt(i) == ']'){
                     backPoint = i;
-                    fri[Integer.parseInt(lectureChoice.substring(frontPoint +1, backPoint))] = courseTitle + professor;   //넣을 데이터의 교시가 들어감.
+                    fri[Integer.parseInt(lectureChoice.substring(frontPoint +1, backPoint))] = courseTitle + "\n"  + professor + "\n" +courseRoom;   //넣을 데이터의 교시가 들어감.
                 }
             }
         }

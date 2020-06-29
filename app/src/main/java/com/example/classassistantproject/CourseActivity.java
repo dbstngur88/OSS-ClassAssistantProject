@@ -1,5 +1,6 @@
 package com.example.classassistantproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -51,7 +52,7 @@ public class CourseActivity extends AppCompatActivity implements CourseAdapter.M
         final TextView courseTime = findViewById(R.id.courseTime);
         final TextView courseRoom = findViewById(R.id.courseRoom);
 
-        //findViewById(R.id.addButton).setOnClickListener(onClickListener);
+        findViewById(R.id.addButton).setOnClickListener(onClickListener);
         findViewById(R.id.searchButton).setOnClickListener(onClickListener);
 
         startToast("로딩중...");
@@ -82,7 +83,7 @@ public class CourseActivity extends AppCompatActivity implements CourseAdapter.M
         }catch (Exception e){
             Log.w(TAG, "error!", e);
         }
-    }
+    }//onCreate()
 
 
     View.OnClickListener onClickListener = new View.OnClickListener(){
@@ -94,7 +95,11 @@ public class CourseActivity extends AppCompatActivity implements CourseAdapter.M
                     schSub();
                     break;
                 case R.id.addButton:
-
+                    Intent intent = new Intent(CourseActivity.this, LectureActivity.class);
+                    intent.putExtra("title", "오픈소스");
+                    intent.putExtra("professor", "김봉재");
+                    intent.putExtra("divide", "11분반");
+                    startActivity(intent);
                     break;
             }
         }
