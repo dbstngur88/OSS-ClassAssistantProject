@@ -50,16 +50,16 @@ public class CourseViewHolder extends RecyclerView.ViewHolder {
         });
 
         //course.xml에 view들 활성화
-       // courseGradeTextView = itemView.findViewById(R.id.ed_insert_grade);
-        courseTitleTextView = itemView.findViewById(R.id.ed_insert_title);
-        courseProfessorTextView = itemView.findViewById(R.id.ed_insert_prof);
-        courseCreditTextView = itemView.findViewById(R.id.ed_insert_credit);
-        courseDivideTextView = itemView.findViewById(R.id.ed_insert_div);
+        courseGradeTextView = itemView.findViewById(R.id.courseGrade);
+        courseTitleTextView = itemView.findViewById(R.id.courseTitle);
+        courseProfessorTextView = itemView.findViewById(R.id.courseProfessor);
+        courseCreditTextView = itemView.findViewById(R.id.courseCredit);
+        courseDivideTextView = itemView.findViewById(R.id.courseDivide);
 
-        coursePersonalTextView = itemView.findViewById(R.id.ed_insert_psl);
+        coursePersonalTextView = itemView.findViewById(R.id.coursePersonal);
         //courseRealPersonalTextView = itemView.findViewById(R.id.ed_insert_rpsl);
-        courseTimeTextView = itemView.findViewById(R.id.ed_insert_time);
-        courseRoomTextView = itemView.findViewById(R.id.ed_insert_room);
+        courseTimeTextView = itemView.findViewById(R.id.courseTime);
+        courseRoomTextView = itemView.findViewById(R.id.courseRoom);
     }
 
     //interface fo click listener

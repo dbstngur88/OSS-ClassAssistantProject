@@ -38,7 +38,6 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
                 .inflate(R.layout.course, viewGroup, false);
 
         CourseViewHolder courseViewHolder = new CourseViewHolder(itemView);
-
         //handle item clicks here
         courseViewHolder.setOnClickListener(new CourseViewHolder.ClickListener() {
             @Override
@@ -46,14 +45,14 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
                 //사용자가 아이템을 클릭할 때 동작
 
                 //show data in toast in clicking
-                String  grade = datalist.get(position).getCourseGrade();
-                String  title = datalist.get(position).getCourserTitle();
-                String  credit = datalist.get(position).getCourseCredit();
-                String  divide = datalist.get(position).getCourseDivide();
-                String  personal = datalist.get(position).getCoursePersonal();
-                String  professor = datalist.get(position).getCourseProfessor();
-                String  time = datalist.get(position).getCourseTime();
-                String  room = datalist.get(position).getCourseRoom();
+                String grade = datalist.get(position).getCourseGrade();
+                String title = datalist.get(position).getCourserTitle();
+                String credit = datalist.get(position).getCourseCredit();
+                String divide = datalist.get(position).getCourseDivide();
+                String personal = datalist.get(position).getCoursePersonal();
+                String professor = datalist.get(position).getCourseProfessor();
+                String time = datalist.get(position).getCourseTime();
+                String room = datalist.get(position).getCourseRoom();
                 Toast.makeText(classActivity, grade + "\n" + title + "\n" + credit + "\n" + divide + "\n" + personal + "\n" + professor + "\n" + time + "\n" + room + "\n", Toast.LENGTH_SHORT).show();
             }
 
@@ -69,15 +68,15 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull CourseViewHolder courseViewHolder, int position) {
         //position에 해당하는 데이터를 아이템뷰에 표시
-        Course item = datalist.get(position);
-        courseViewHolder.courseGradeTextView.setText(item.getCourseGrade());
-        courseViewHolder.courseTitleTextView.setText(item.getCourserTitle());
-        courseViewHolder.courseCreditTextView.setText(item.getCourseCredit());
-        courseViewHolder.courseDivideTextView.setText(item.getCourseDivide());
-        courseViewHolder.coursePersonalTextView.setText(item.getCoursePersonal());
-        courseViewHolder.courseProfessorTextView.setText(item.getCourseProfessor());
-        courseViewHolder.courseTimeTextView.setText(item.getCourseTime());
-        courseViewHolder.courseRoomTextView.setText(item.getCourseRoom());
+        //Course item = datalist.get(position);
+        courseViewHolder.courseGradeTextView.setText(datalist.get(position).getCourseGrade());
+        courseViewHolder.courseTitleTextView.setText(datalist.get(position).getCourserTitle());
+        courseViewHolder.courseCreditTextView.setText(datalist.get(position).getCourseCredit());
+        courseViewHolder.courseDivideTextView.setText(datalist.get(position).getCourseDivide());
+        courseViewHolder.coursePersonalTextView.setText(datalist.get(position).getCoursePersonal());
+        courseViewHolder.courseProfessorTextView.setText(datalist.get(position).getCourseProfessor());
+        courseViewHolder.courseTimeTextView.setText(datalist.get(position).getCourseTime());
+        courseViewHolder.courseRoomTextView.setText(datalist.get(position).getCourseRoom());
     }
 
     @Override
