@@ -1,64 +1,62 @@
 package com.example.classassistantproject;
+
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.RatingHolder> {
-
-    private List<Rating> ratingList;
-    private ListItemClickListener listItemClickListener;
-
-    public RatingAdapter(List<Rating> ratingList,ListItemClickListener listItemClickListener) {
+public class RatingAdapter extends RecyclerView.Adapter<RatingViewHolder> {
+    RatingActivity ratingActivity;
+    List<Rating> ratingList;
+    Context context;
+    public RatingAdapter(RatingActivity ratingActivity, List<Rating> ratingList, Context context) {
+        this.ratingActivity = ratingActivity;
         this.ratingList = ratingList;
-        this.listItemClickListener = listItemClickListener;
+        this.context = context;
     }
-
-
 
     @NonNull
     @Override
+    public RatingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int option) {
 
-    public RatingAdapter.RatingHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.rateitem,parent,false);
 
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.rateitem, parent, false);
+        RatingViewHolder ratingViewHolder = new RatingViewHolder(itemView);
 
-        return new RatingHolder(itemView);
+        ratingViewHolder.setOnClickListener(new RatingViewHolder.ClickListener(){
+            @Override
+            public void onItemClick(View view, int position){
+
+                String title = ratingList.get(position).getCourseTitle();
+                String professor = ratingList.get(position).getCourseProfessor();
+                Toast.makeText(ratingActivity, title + "\n" + professor,
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onItemLongClick(View view, int option) {
+
+            }
+        });
+        return ratingViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RatingAdapter.RatingHolder holder, int i) {
+    public void onBindViewHolder(@NonNull RatingViewHolder holder, int position) {
+        holder.CourseTitleTextView.setText(ratingList.get(position).getCourseTitle());
+        holder.CourseProfessorTextView.setText(ratingList.get(position).getCourseProfessor());
 
-        holder.professor.setText(ratingList.get(i).getCourseProfessor());
-        holder.lecture.setText(ratingList.get(i).getCourseTitle());
     }
 
     @Override
     public int getItemCount() {
         return ratingList.size();
-    }
-    public class RatingHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-
-        private TextView professor, lecture;
-
-        public RatingHolder(@NonNull View itemView) {
-            super(itemView);
-            professor = itemView.findViewById(R.id.txt_professor);
-            lecture = itemView.findViewById(R.id.txt_lecture);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            listItemClickListener.listItemClick(getAdapterPosition());
-        }
-    }
-    public interface ListItemClickListener {
-        void listItemClick (int position);
     }
 }
