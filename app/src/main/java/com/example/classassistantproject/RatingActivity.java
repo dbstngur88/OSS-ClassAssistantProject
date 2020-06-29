@@ -61,7 +61,7 @@ public class RatingActivity extends AppCompatActivity  {
             switch(v.getId()){
                 case R.id.SearchBtn:
                     String getProName = ((EditText)findViewById(R.id.SchProfessorField)).getText().toString();
-                    if(getProName == null){
+                    if(getProName == ""){
                         startToast("교수명을 입력하세요.");
                     }else {
                         SearchWithPro();

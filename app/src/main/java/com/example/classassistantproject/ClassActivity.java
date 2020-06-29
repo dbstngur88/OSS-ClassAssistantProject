@@ -2,7 +2,10 @@ package com.example.classassistantproject;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -54,10 +57,76 @@ public class ClassActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
 
+        //adapter
+        adapter = new CourseAdapter(ClassActivity.this, dataList, context);
+
         //show data in recyclerview
         showData();
+
+        //검색 버튼 활성화(Action Listener 설치)
+        findViewById(R.id.searchButton).setOnClickListener(onClickListener);
+
     }
 
+    View.OnClickListener onClickListener = new View.OnClickListener(){
+        @Override
+        public void onClick(View v){
+            Intent intent;
+            switch(v.getId()){
+                case R.id.searchButton:
+                    String getSubName = ((EditText)findViewById(R.id.majorText)).getText().toString();
+                    if(getSubName == ""){
+                        startToast("검색할 과목을 입력하세요.");
+                    }else {
+                        SearchWithSub();
+                    }
+                    break;
+
+            }
+        }
+    };
+
+    private void SearchWithSub(){
+        String getSubName = ((EditText)findViewById(R.id.majorText)).getText().toString();
+        mRecyclerView.setAdapter(adapter);
+        dataList.removeAll(dataList);
+        db.collection("elective")
+                .whereEqualTo("courseTitle", getSubName)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        //called when data is retrived
+                        pd.dismiss();
+
+                        //show data
+                        for (DocumentSnapshot doc : task.getResult()) {
+                            Course course = new Course (
+                                    doc.getString("courseGrade"),
+                                    doc.getString("courseTitle"),
+                                    doc.getString("courseCredit"),
+                                    doc.getString("courseDivide"),
+                                    doc.getString("coursePersonal"),
+                                    doc.getString("courseProfessor"),
+                                    doc.getString("courseTime"),
+                                    doc.getString("courseRoom"));
+                            dataList.add(course);
+                        }
+                        //set adapter to recyclerview
+                        mRecyclerView.setAdapter(adapter);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //called when there is any error while retriving
+                        pd.dismiss();
+
+                        Toast.makeText(ClassActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+    }
     private void showData() {
 
         pd = new ProgressDialog(this);
@@ -86,9 +155,6 @@ public class ClassActivity extends AppCompatActivity {
                         doc.getString("courseRoom"));
                         dataList.add(course);
                     }
-
-                //adapter
-                adapter = new CourseAdapter(ClassActivity.this, dataList, context);
                 //set adapter to recyclerview
                 mRecyclerView.setAdapter(adapter);
                 }
@@ -104,4 +170,9 @@ public class ClassActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    private void startToast(String msg){
+        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+    }
+
 }
