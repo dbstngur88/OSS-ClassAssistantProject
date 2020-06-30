@@ -132,16 +132,10 @@ public class LectureActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             //called when data is retrived
                             pd.dismiss();
-                            Toast.makeText(LectureActivity.this, "읽어라 제발", Toast.LENGTH_SHORT).show();
+
                             //show data
                             for (DocumentSnapshot doc : task.getResult()) {
-
-                                Toast.makeText(LectureActivity.this, "읽었니? 제발", Toast.LENGTH_SHORT).show();
-                                //doc.getString("courseTime");
-                                //doc.getString("courseTitle");
-                                //doc.getString("courseProfessor");
-                                //doc.getString("courseRoom");
-                                lecture.addlecture(doc.getString("courseTime"), doc.getString("courseTitle"), doc.getString("courseProfessor"), doc.getString("courseRoom"));
+                                lecture.addlecture(doc.getString("courseTime"), doc.getString("courseTitle"), doc.getString("courseProfessor"), doc.getString("CourseRoom"));
                                 lecture.setting(mon, tue, wed, thu, fri, LectureActivity.this);
                             }
 
