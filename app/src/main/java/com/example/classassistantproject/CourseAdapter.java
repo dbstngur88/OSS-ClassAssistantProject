@@ -40,6 +40,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
         CourseViewHolder courseViewHolder = new CourseViewHolder(itemView);
         //handle item clicks here
         courseViewHolder.setOnClickListener(new CourseViewHolder.ClickListener() {
+
+
             @Override
             public void onItemClick(View view, int position) {
                 /**
@@ -56,7 +58,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
                 String professor = datalist.get(position).getCourseProfessor();
                 String time = datalist.get(position).getCourseTime();
                 String room = datalist.get(position).getCourseRoom();
-                Toast.makeText(classActivity, title + "\n" + grade + "\n" + credit + "학점\n" + divide + "\n" + personal + "\n" + professor + "\n" + time + "\n" + room + "\n", Toast.LENGTH_SHORT).show();
+                Toast.makeText(classActivity, title + "\n" + grade + "\n" + credit + "\n" + divide + "\n" + personal + "\n" + professor + "\n" + time + "\n" + room + "\n", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -65,18 +67,16 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 
             }
 
-            @Override
-            public void onAddClick(View view, int position) {
-                //추가버튼 클릭 시 동작
-                String time = datalist.get(position).getCourseGrade();
-                String title = datalist.get(position).getCourseTitle();
-                String professor = datalist.get(position).getCourseCredit();
-                String room = datalist.get(position).getCourseRoom();
-                classActivity.uploadData(time, title, professor, room);
+            //@Override
+            public void onAddButtonClick(View view, int position) {
+                //사용자가 추가버튼을 누를 때 동작
+
+                String title = datalist.get(position).getCourseTitle(); //교과목명
+                String time = datalist.get(position).getCourseTime(); //강의시간
+                String professor = datalist.get(position).getCourseProfessor(); //담당교수
+                String room = datalist.get(position).getCourseRoom(); //강의실
             }
         });
-
-
         return courseViewHolder;
     }
 
