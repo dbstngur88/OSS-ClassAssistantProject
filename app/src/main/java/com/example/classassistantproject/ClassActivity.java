@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -212,45 +213,40 @@ public class ClassActivity extends AppCompatActivity {
     }//showdata()
 
     //파이어스토어에 강의정보를 올려주는 메소드
-    private void uploadData(String time, String title, String professor, String room) {
+    protected void uploadData(String time, String title, String professor, String room) {
 
-        final String id = UUID.randomUUID().toString();
+        //set title of progress bar
+        pd.setTitle("등록중...");
+        //show progress bar when user clike save button
+        pd.show();
+        //random id for each data to be stored
+        String id = UUID.randomUUID().toString();
 
 
-        //강의정보 해쉬맵
-        final Map<String, Object> lectureMap = new HashMap<>();
-        lectureMap.put("courseProfessor", time);
-        lectureMap.put("courseTitle", title);
-        lectureMap.put("coursePersonal", professor);
-        lectureMap.put("coursRoom", room);
+        Map<String, Object> putMap = new HashMap<>();
+        putMap.put("courseTime", time);
+        putMap.put("courseTitle", title);
+        putMap.put("courseProfessor", professor);
+        putMap.put("CourseRoom", room);
 
-        //해당 유저 이메일 확인후 본인만의 myLecture 생성 후 강의 추가
-        mUser.getIdToken(true)
-                .addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
-                    public void onComplete(@NonNull Task<GetTokenResult> task) {
-                        if (task.isSuccessful()) {
-                            String idToken = task.getResult().getToken();
-                            if(db.collection("myLecture").document(idToken) == null) {
-                                // 현재 id로 만들어진 document가 없을때
-                                db.collection("myLecture").document(idToken).set(lectureMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Toast.makeText(ClassActivity.this, "로딩 성공!", Toast.LENGTH_SHORT).show();
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.d("error", e.getMessage());
-                                        Toast.makeText(ClassActivity.this, "로딩 실패, 오류 발생", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }else{
-
-                            }
-                        } else {
-                            task.getException();
-                        }
+        db.collection("myLecture").document(title)
+                .set(putMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        //검색에 성공하였을 경우 실행
+                        pd.dismiss();
+                        Toast.makeText(ClassActivity.this, "등록되었습니다!",Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //검색에 실페하였을 경우 실행
+                        pd.dismiss();
+                        //오류메시지 get
+                        Log.d("error",e.getMessage());
+                        Toast.makeText(ClassActivity.this, "오류가 발생했습니다!",Toast.LENGTH_SHORT).show();
                     }
                 });
     }//updata()
@@ -258,7 +254,4 @@ public class ClassActivity extends AppCompatActivity {
     private void startToast(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
     }
-
-
-
 }

@@ -24,6 +24,8 @@ public class CourseViewHolder extends RecyclerView.ViewHolder {
    TextView courseTimeTextView;
    TextView courseRoomTextView;
 
+   ImageView addImage;
+
     private  CourseViewHolder.ClickListener mClickListener;
 
     View mView;
@@ -44,7 +46,17 @@ public class CourseViewHolder extends RecyclerView.ViewHolder {
         courseTimeTextView = itemView.findViewById(R.id.courseTime);
         courseRoomTextView = itemView.findViewById(R.id.courseRoom);
 
+        addImage = itemView.findViewById(R.id.addButton);
+
         mView = itemView;
+
+        //추가버튼 클릭 리스너
+        addImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mClickListener.onAddClick(v, getAdapterPosition());
+            }
+        });
 
         //item click listener
         itemView.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +80,7 @@ public class CourseViewHolder extends RecyclerView.ViewHolder {
     public  interface ClickListener {
         void onItemClick(View view, int position);
         void onItemLongClick(View view, int position);
+        void onAddClick(View view, int position);
     }
 
     public  void setOnClickListener(CourseViewHolder.ClickListener clickListener) {

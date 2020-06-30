@@ -64,6 +64,16 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
                 //사용자가 아이템을 길게 누를 때 동작
 
             }
+
+            @Override
+            public void onAddClick(View view, int position) {
+                //추가버튼 클릭 시 동작
+                String time = datalist.get(position).getCourseGrade();
+                String title = datalist.get(position).getCourseTitle();
+                String professor = datalist.get(position).getCourseCredit();
+                String room = datalist.get(position).getCourseRoom();
+                classActivity.uploadData(time, title, professor, room);
+            }
         });
 
 
