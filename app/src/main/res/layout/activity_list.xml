@@ -30,6 +30,14 @@
             android:textColor="#FF6347"
             android:textSize="24sp"
             android:textStyle="bold" />
+        <Button
+            android:id="@+id/btn_add"
+            android:text="작 성"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_gravity="right"/>
     </LinearLayout>
 <LinearLayout
     android:layout_width="match_parent"
@@ -42,12 +50,5 @@
         android:layout_height="match_parent" />
 
 </LinearLayout>
-    <Button
-        android:id="@+id/btn_add"
-        android:text="작 성"
-        android:textSize="20sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_gravity="right"/>
+
 </LinearLayout>

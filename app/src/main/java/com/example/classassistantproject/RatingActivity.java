@@ -111,6 +111,7 @@ public class RatingActivity extends AppCompatActivity  {
     private void showData() {
             pd  = new ProgressDialog(this);
             pd.setTitle("목록을 불러오는중...");
+            pd.show();
 
                     firebaseFirestore.collection("rating").get()
                             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

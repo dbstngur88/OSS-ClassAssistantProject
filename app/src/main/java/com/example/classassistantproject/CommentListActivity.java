@@ -89,4 +89,29 @@ public class CommentListActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    public void deleteData(int index){
+        pd.setTitle("삭제중입니다...");
+        pd.show();
+        db.collection("comments").document(modelList.get(index).getId())
+                .delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                pd.dismiss();
+                Toast.makeText(CommentListActivity.this,"삭제 완료!"
+                        ,Toast.LENGTH_SHORT).show();
+                showData();
+            }
+
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        pd.dismiss();
+                   Toast.makeText(CommentListActivity.this,e.getMessage()
+                           ,Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+    }
 }

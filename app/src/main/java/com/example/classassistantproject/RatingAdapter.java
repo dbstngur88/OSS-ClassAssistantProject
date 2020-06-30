@@ -1,5 +1,6 @@
 package com.example.classassistantproject;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -42,7 +43,7 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingViewHolder> {
                 Toast.makeText(ratingActivity, title + "\n" + professor,
                         Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(ratingActivity, CommentWriteActivity.class);
-                ratingActivity.startActivity(intent);
+                ((Activity) ratingActivity).startActivityForResult(intent, Activity.RESULT_OK);
 
 
             }
