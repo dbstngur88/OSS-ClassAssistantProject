@@ -2,7 +2,6 @@ package com.example.classassistantproject;
 
 import android.content.Context;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Lecture {
     //강의를 등록했을때 강의시간이 겹치는 것을 확인
@@ -44,7 +43,7 @@ public class Lecture {
             }
         }
         if((tmp = lectureChoice.indexOf("화")) > -1){
-            //tmp에 월이라는 단어가 있으면 그 위치를 반환하여 tmp에 들어가기
+            //tmp에 화라는 단어가 있으면 그 위치를 반환하여 tmp에 들어가기
             tmp+=2;
             int frontPoint = tmp;
             int backPoint = tmp;
@@ -60,7 +59,7 @@ public class Lecture {
             }
         }
         if((tmp = lectureChoice.indexOf("수")) > -1){
-            //tmp에 월이라는 단어가 있으면 그 위치를 반환하여 tmp에 들어가기
+            //tmp에 수라는 단어가 있으면 그 위치를 반환하여 tmp에 들어가기
             tmp+=2;
             int frontPoint = tmp;
             int backPoint = tmp;
@@ -76,7 +75,7 @@ public class Lecture {
             }
         }
         if((tmp = lectureChoice.indexOf("목")) > -1){
-            //tmp에 월이라는 단어가 있으면 그 위치를 반환하여 tmp에 들어가기
+            //tmp에 목이라는 단어가 있으면 그 위치를 반환하여 tmp에 들어가기
             tmp+=2;
             int frontPoint = tmp;
             int backPoint = tmp;
@@ -92,7 +91,7 @@ public class Lecture {
             }
         }
         if((tmp = lectureChoice.indexOf("금")) > -1){
-            //tmp에 월이라는 단어가 있으면 그 위치를 반환하여 tmp에 들어가기
+            //tmp에 금이라는 단어가 있으면 그 위치를 반환하여 tmp에 들어가기
             tmp+=2;
             int frontPoint = tmp;
             int backPoint = tmp;
