@@ -104,6 +104,8 @@ public class SignUpActivity extends AppCompatActivity {
                              userID = fAuth.getCurrentUser().getUid();
                              DocumentReference documentReference = fStore.collection("users").document(userID);
 
+                             fStore.collection("장바구니").document("신청목록").collection(userID);
+
                              Map<String, Object> userMap = new HashMap<>();
                              userMap.put("name", name);
                              userMap.put("number", num);

@@ -213,7 +213,7 @@ public class ClassActivity extends AppCompatActivity {
     }//showdata()
 
     //파이어스토어에 강의정보를 올려주는 메소드
-    protected void uploadData(String time, String title, String professor, String room) {
+    protected void uploadData(String time, final String title, String professor, String room) {
 
         //set title of progress bar
         pd.setTitle("등록중...");
@@ -223,30 +223,49 @@ public class ClassActivity extends AppCompatActivity {
         String id = UUID.randomUUID().toString();
 
 
-        Map<String, Object> putMap = new HashMap<>();
+        final Map<String, Object> putMap = new HashMap<>();
         putMap.put("courseTime", time);
         putMap.put("courseTitle", title);
         putMap.put("courseProfessor", professor);
         putMap.put("CourseRoom", room);
 
-        db.collection("myLecture").document(title)
-                .set(putMap)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        //검색에 성공하였을 경우 실행
-                        pd.dismiss();
-                        Toast.makeText(ClassActivity.this, "등록되었습니다!",Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        //검색에 실페하였을 경우 실행
-                        pd.dismiss();
-                        //오류메시지 get
-                        Log.d("error",e.getMessage());
-                        Toast.makeText(ClassActivity.this, "오류가 발생했습니다!",Toast.LENGTH_SHORT).show();
+        //해당 유저 이메일 확인후 본인만의 myLecture 생성 후 강의 추가
+        /**
+         * 해당 로직 동작 방식
+         * 1. idToken 생성
+         * 2. idToken 생성완료 후 에'담긴강의' 컬렉션에 해당강의 담기
+         * 3. 강의를 담을 때 '담긴강의' 컬렉션에서 겹치는 강의 여부 확인
+         */
+        mUser.getIdToken(true)
+                .addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
+                    public void onComplete(@NonNull Task<GetTokenResult> task) {
+                        if (task.isSuccessful()) {
+                            String idToken = task.getResult().getToken();
+
+                            db.collection("장바구니").document("신청목록").collection(idToken).document(title)
+                                    .set(putMap);
+
+                            if(db.collection("장바구니").document("신청목록").collection(idToken).document(title) == null) {
+                                // 현재 id로 만들어진 document가 없을때
+                                db.collection("myLecture").document(idToken).set(putMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(ClassActivity.this, "로딩 성공!", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.d("error", e.getMessage());
+                                                Toast.makeText(ClassActivity.this, "로딩 실패, 오류 발생", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            }else{
+
+                            }
+                        } else {
+                            task.getException();
+                        }
                     }
                 });
     }//updata()
