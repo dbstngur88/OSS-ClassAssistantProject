@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,7 +47,7 @@ public class RatingActivity extends AppCompatActivity  {
         firebaseFirestore = FirebaseFirestore.getInstance();
 
         recyclerView = findViewById(R.id.recycleview);
-
+        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(),1));
         recyclerView.setHasFixedSize(true);
         adapter = new RatingAdapter(RatingActivity.this, ratingList, context);
 
