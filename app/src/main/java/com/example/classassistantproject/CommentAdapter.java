@@ -43,29 +43,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentListHolder> {
 
          @Override
          public void onItemLongClick(View view, final int position) {
+             commentListActivity.deleteData(position);
 
-             AlertDialog.Builder builder = new AlertDialog.Builder(commentListActivity);
-             String[] options = {"수정","삭제"};
-             builder.setItems(options, new DialogInterface.OnClickListener() {
-                 @Override
-                 public void onClick(DialogInterface dialog, int which) {
-                     if(which == 0) {
-                         String id = listModel.get(position).getId();
-                         String rateScore = listModel.get(position).getRateScore();
-                         String comment = listModel.get(position).getComment();
-
-                         Intent intent = new Intent(commentListActivity, CommentWriteActivity.class);
-                        intent.putExtra("pId",id);
-                        intent.putExtra("pRateScore",rateScore);
-                        intent.putExtra("pComment",comment);
-
-                        commentListActivity.startActivity(intent);
-                     }
-                     if(which == 1) {
-                         commentListActivity.deleteData(position);
-                     }
-                 }
-             });
          }
      });
         return commentListHolder;
