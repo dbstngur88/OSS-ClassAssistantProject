@@ -56,7 +56,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
                 String professor = datalist.get(position).getCourseProfessor();
                 String time = datalist.get(position).getCourseTime();
                 String room = datalist.get(position).getCourseRoom();
-                Toast.makeText(classActivity, title + "\n" + grade + "\n" + credit + "\n" + divide + "\n" + personal + "\n" + professor + "\n" + time + "\n" + room + "\n", Toast.LENGTH_SHORT).show();
+                Toast.makeText(classActivity, title + "\n" + grade + "\n" + credit + "학점\n" + divide + "\n" + personal + "\n" + professor + "\n" + time + "\n" + room + "\n", Toast.LENGTH_SHORT).show();
             }
 
             @Override

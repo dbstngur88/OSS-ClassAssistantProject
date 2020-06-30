@@ -49,8 +49,8 @@ public class ClassActivity extends AppCompatActivity {
     //layout manager for recyclerview
     RecyclerView.LayoutManager layoutManager;
 
-    FirebaseFirestore db; //파이어베이스 인스턴
-    CourseAdapter adapter; //CourseAdapter 인스턴스스
+    FirebaseFirestore db; //파이어베이스 인스턴스
+    CourseAdapter adapter; //CourseAdapter 인스턴스
     ProgressDialog pd;
     FirebaseUser mUser;   // 파이어베이스 user 확인할 변수
 
@@ -65,7 +65,6 @@ public class ClassActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
 
-        addButton = findViewById(R.id.addButton);
         courseTime = findViewById(R.id.courseTime);
         courseTitle = findViewById(R.id.courseTitle);
         courseProfessor = findViewById(R.id.courseProfessor);
@@ -89,9 +88,6 @@ public class ClassActivity extends AppCompatActivity {
 
         //show data in recyclerview
         showData();
-
-        //검색 버튼 활성화(Action Listener 설치)
-        findViewById(R.id.searchButton).setOnClickListener(onClickListener);
 
         EditText editText = findViewById(R.id.majorText);
         editText.addTextChangedListener(new TextWatcher() {
@@ -122,27 +118,6 @@ public class ClassActivity extends AppCompatActivity {
         }
         adapter.filterList(filteredList);
     }
-
-    View.OnClickListener onClickListener = new View.OnClickListener(){
-        @Override
-        public void onClick(View v){
-            Intent intent;
-            switch(v.getId()){
-                case R.id.searchButton:
-                    String getSubName = ((EditText)findViewById(R.id.majorText)).getText().toString();
-                    if(getSubName.length() == 0){
-                        startToast("검색할 과목을 입력하세요.");
-                    }else {
-                        SearchWithSub();
-                    }
-                    break;
-                case R.id.addButton:
-
-                    break;
-
-            }
-        }
-    };
 
     private void SearchWithSub(){
 
