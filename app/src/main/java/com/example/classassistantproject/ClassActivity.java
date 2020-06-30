@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -49,8 +50,8 @@ public class ClassActivity extends AppCompatActivity {
     //layout manager for recyclerview
     RecyclerView.LayoutManager layoutManager;
 
-    FirebaseFirestore db; //파이어베이스 인스턴
-    CourseAdapter adapter; //CourseAdapter 인스턴스스
+    FirebaseFirestore db; //파이어베이스 인스턴스
+    CourseAdapter adapter; //CourseAdapter 인스턴스
     ProgressDialog pd;
     FirebaseUser mUser;   // 파이어베이스 user 확인할 변수
 
@@ -65,7 +66,6 @@ public class ClassActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
 
-        addButton = findViewById(R.id.addButton);
         courseTime = findViewById(R.id.courseTime);
         courseTitle = findViewById(R.id.courseTitle);
         courseProfessor = findViewById(R.id.courseProfessor);
@@ -89,9 +89,6 @@ public class ClassActivity extends AppCompatActivity {
 
         //show data in recyclerview
         showData();
-
-        //검색 버튼 활성화(Action Listener 설치)
-        findViewById(R.id.searchButton).setOnClickListener(onClickListener);
 
         EditText editText = findViewById(R.id.majorText);
         editText.addTextChangedListener(new TextWatcher() {
@@ -122,31 +119,6 @@ public class ClassActivity extends AppCompatActivity {
         }
         adapter.filterList(filteredList);
     }
-
-    View.OnClickListener onClickListener = new View.OnClickListener(){
-        @Override
-        public void onClick(View v){
-            Intent intent;
-            switch(v.getId()){
-                case R.id.searchButton:
-                    String getSubName = ((EditText)findViewById(R.id.majorText)).getText().toString();
-                    if(getSubName == ""){
-                        startToast("검색할 과목을 입력하세요.");
-                    }else {
-                        SearchWithSub();
-                    }
-                    break;
-                case R.id.addButton:
-                    CourseAdapter courseAdapter = new CourseAdapter(ClassActivity.this,dataList,context);
-
-                    //function call to upload data
-                    //courseAdapter.
-                    //uploadData( time, title, professor, room);
-                break;
-
-            }
-        }
-    };
 
     private void SearchWithSub(){
 
@@ -241,39 +213,53 @@ public class ClassActivity extends AppCompatActivity {
     }//showdata()
 
     //파이어스토어에 강의정보를 올려주는 메소드
-    private void uploadData(String time, String title, String professor, String room) {
+    protected void uploadData(String time, final String title, String professor, String room) {
 
-        final String id = UUID.randomUUID().toString();
+        //set title of progress bar
+        pd.setTitle("등록중...");
+        //show progress bar when user clike save button
+        pd.show();
+        //random id for each data to be stored
+        String id = UUID.randomUUID().toString();
 
 
-        //강의정보 해쉬맵
-        final Map<String, Object> lectureMap = new HashMap<>();
-        lectureMap.put("courseProfessor", time);
-        lectureMap.put("courseTitle", title);
-        lectureMap.put("coursePersonal", professor);
-        lectureMap.put("coursRoom", room);
+        final Map<String, Object> putMap = new HashMap<>();
+        putMap.put("courseTime", time);
+        putMap.put("courseTitle", title);
+        putMap.put("courseProfessor", professor);
+        putMap.put("CourseRoom", room);
 
         //해당 유저 이메일 확인후 본인만의 myLecture 생성 후 강의 추가
+        /**
+         * 해당 로직 동작 방식
+         * 1. idToken 생성
+         * 2. idToken 생성완료 후 에'담긴강의' 컬렉션에 해당강의 담기
+         * 3. 강의를 담을 때 '담긴강의' 컬렉션에서 겹치는 강의 여부 확인
+         */
         mUser.getIdToken(true)
                 .addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
                     public void onComplete(@NonNull Task<GetTokenResult> task) {
                         if (task.isSuccessful()) {
                             String idToken = task.getResult().getToken();
-                            if(db.collection("myLecture").document(idToken) == null) {
+
+                            db.collection("장바구니").document("신청목록").collection(idToken).document(title)
+                                    .set(putMap);
+
+                            if(db.collection("장바구니").document("신청목록").collection(idToken).document(title) == null) {
                                 // 현재 id로 만들어진 document가 없을때
-                                db.collection("myLecture").document(idToken).set(lectureMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                db.collection("myLecture").document(idToken).set(putMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Toast.makeText(ClassActivity.this, "로딩 성공!", Toast.LENGTH_SHORT).show();
                                     }
                                 })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.d("error", e.getMessage());
-                                        Toast.makeText(ClassActivity.this, "로딩 실패, 오류 발생", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.d("error", e.getMessage());
+                                                Toast.makeText(ClassActivity.this, "로딩 실패, 오류 발생", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                             }else{
 
                             }
@@ -287,7 +273,4 @@ public class ClassActivity extends AppCompatActivity {
     private void startToast(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
     }
-
-
-
 }
