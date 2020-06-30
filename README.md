@@ -12,6 +12,14 @@
 돌아가기 버튼을 눌렀을때 일반 사용자의 경우 돌아가지고 관리자의 경우 돌아가기를 누르면 강의를 추가하는 창으로 넘어가게된다.
 한줄평보러가기 버튼을 눌렀을때 원하는 강의를 찾아 한줄평을 입력하거나 해당 과목의 한줄평을 볼 수 있다.
 
+## 개발환경
+ - Android Studio 4.0
+ - FireStore
+
+## SDK 버젼
+ - minSdkVersion 21
+ - targetSdkVersion 29
+
 ## 기여 내용
 ### 윤수혁
 
@@ -23,9 +31,8 @@
 
 
 ### 이영재
-#### 프로젝트내 모든 스타일 생성
-#### 각종 UI 담당
-####스플래시 화면인 Splash.java 구현
-####강의 목록띄우는 Course.java & CourseActivity.java 구현
-####추가한 강의 시간표에 불러오는 Lecture.java & LectureActivity.java 구현
- 
+- 프로젝트내 모든 스타일 생성
+- 각종 UI 담당
+- 스플래시 화면인 Splash.java 구현
+- 강의 목록띄우는 Course.java & CourseActivity.java 구현
+- 추가한 강의 시간표에 불러오는 Lecture.java & LectureActivity.java 구현
