@@ -110,11 +110,11 @@ public class CompetsubSchActivity extends AppCompatActivity {
                     break;
 
                 case R.id.GoBackBtn:
-                    //onBackPressed();
+                    onBackPressed();
 
                     //경쟁률 테이블 데이터 추가용 코드, 필요 시 위 코드와 주석을 변경해서 사용
-                    intent = new Intent(CompetsubSchActivity.this, InsertCompetDataActivity.class);
-                    startActivity(intent);
+                    //intent = new Intent(CompetsubSchActivity.this, InsertCompetDataActivity.class);
+                    //startActivity(intent);
 
                     break;
                 case R.id.GoEvaluationBtn:
