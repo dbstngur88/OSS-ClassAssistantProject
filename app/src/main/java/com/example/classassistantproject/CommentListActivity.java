@@ -3,7 +3,6 @@ package com.example.classassistantproject;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.RecoverySystem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -47,6 +46,7 @@ public class CommentListActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        adapter = new CommentAdapter(CommentListActivity.this, modelList);
 
         pd = new ProgressDialog(this);
 
@@ -65,6 +65,7 @@ public class CommentListActivity extends AppCompatActivity {
     private void showData() {
         pd.setTitle("목록을 불러오는 중입니다...");
         pd.show();
+        modelList.removeAll(modelList);
         db.collection("comments")
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -76,7 +77,6 @@ public class CommentListActivity extends AppCompatActivity {
                             doc.getString("rateScore"));
                     modelList.add(model);
                 }
-                adapter = new CommentAdapter(CommentListActivity.this, modelList);
                 recyclerView.setAdapter(adapter);
             }
         })
