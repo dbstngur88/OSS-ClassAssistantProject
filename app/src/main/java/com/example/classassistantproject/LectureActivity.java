@@ -135,7 +135,7 @@ public class LectureActivity extends AppCompatActivity {
 
                             //show data
                             for (DocumentSnapshot doc : task.getResult()) {
-                                lecture.addlecture(doc.getString("courseTime"), doc.getString("courseTitle"), doc.getString("courseProfessor"), doc.getString("CourseRoom"));
+                                lecture.addlecture(doc.getString("courseTime"), doc.getString("courseTitle"), doc.getString("courseProfessor"), doc.getString("courseRoom"));
                                 lecture.setting(mon, tue, wed, thu, fri, LectureActivity.this);
                             }
 
