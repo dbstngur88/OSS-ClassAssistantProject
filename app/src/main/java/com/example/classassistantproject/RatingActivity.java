@@ -74,6 +74,7 @@ public class RatingActivity extends AppCompatActivity  {
         }
     };
 
+
     private void SearchWithPro(){
         String getProName = ((EditText)findViewById(R.id.SchProfessorField)).getText().toString();
         recyclerView.setAdapter(adapter);
@@ -132,7 +133,6 @@ public class RatingActivity extends AppCompatActivity  {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             pd.dismiss();
-                            pd.dismiss();
 
                             Toast.makeText(RatingActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
 
@@ -148,10 +148,6 @@ public class RatingActivity extends AppCompatActivity  {
 
                 }
             });
-
-
-
-
 
     }
 

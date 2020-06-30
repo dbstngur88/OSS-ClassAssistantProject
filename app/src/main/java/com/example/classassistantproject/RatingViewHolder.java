@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class RatingViewHolder extends RecyclerView.ViewHolder {
 
-    TextView CourseTitleTextView;
-    TextView CourseProfessorTextView;
+    TextView CourseTitleTextView,CourseTitle1;
+    TextView CourseProfessorTextView,CourseProfessor1;
     private RatingViewHolder.ClickListener clickListener;
 
     private View view;
@@ -32,15 +32,15 @@ public class RatingViewHolder extends RecyclerView.ViewHolder {
                 return true;
             }
         });
-
         CourseTitleTextView = itemView.findViewById(R.id.CourseTitle);
         CourseProfessorTextView = itemView.findViewById(R.id.CourseProfessor);
     }
     public interface ClickListener {
-        void onItemClick(View view, int option);
-        void onItemLongClick(View view, int option);
+        void onItemClick(View view, int position);
+        void onItemLongClick(View view, int position);
     }
     public void setOnClickListener(RatingViewHolder.ClickListener clicker) {
         clickListener = clicker;
     }
+
 }

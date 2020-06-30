@@ -224,7 +224,7 @@ public class ClassActivity extends AppCompatActivity {
         putMap.put("courseTime", time);
         putMap.put("courseTitle", title);
         putMap.put("courseProfessor", professor);
-        putMap.put("CourseRoom", room);
+        putMap.put("courseRoom", room);
 
         //해당 유저 이메일 확인후 본인만의 myLecture 생성 후 강의 추가
         /**
