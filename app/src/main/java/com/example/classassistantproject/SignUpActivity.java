@@ -37,6 +37,7 @@ public class SignUpActivity extends AppCompatActivity {
     Spinner spinner;
 
     String userID;
+    String userEmail;
 
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -102,9 +103,8 @@ public class SignUpActivity extends AppCompatActivity {
                              mDialog.show();
                              Toast.makeText(SignUpActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                              userID = fAuth.getCurrentUser().getUid();
+                             userEmail = fAuth.getCurrentUser().getEmail();
                              DocumentReference documentReference = fStore.collection("users").document(userID);
-
-                             fStore.collection("장바구니").document("신청목록").collection(userID);
 
                              Map<String, Object> userMap = new HashMap<>();
                              userMap.put("name", name);
