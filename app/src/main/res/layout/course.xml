@@ -20,15 +20,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@drawable/style_login">
-            <TextView
-                android:id="@+id/courseGrade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1학년"
-                android:layout_gravity="center"
-                android:padding="3dp"
-                android:textColor="#FF6347"
-                android:textStyle="bold"/>
+
             <TextView
                 android:id="@+id/courseTitle"
                 android:layout_width="wrap_content"
@@ -53,6 +45,17 @@
                 android:padding="3dp"
                 android:textColor="#000000"
                 android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/courseGrade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="3dp"
+                android:text="1학년"
+                android:textColor="#FF6347"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/courseCredit"
                 android:layout_width="wrap_content"
@@ -75,16 +78,17 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@drawable/style_pw">
+
             <TextView
                 android:id="@+id/courseTime"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="강의 시간"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:padding="3dp"
                 android:layout_marginRight="8dp"
+                android:padding="3dp"
+                android:text="강의 시간"
                 android:textColor="#FF6347"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
             <TextView
                 android:id="@+id/courseRoom"
                 android:layout_width="wrap_content"
@@ -117,17 +121,13 @@
         </LinearLayout>
     </LinearLayout>
 
-    <Button
+    <ImageView
         android:id="@+id/addButton"
-        android:layout_width="80dp"
-        android:layout_height="17dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="180dp"
-        android:layout_marginRight="23dp"
-        android:background="@drawable/style_button"
-        android:gravity="center"
-        android:text="추가"
-        android:textColor="#FF6347"
-        android:textSize="18dp" />
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_add"
+        android:layout_gravity="right"
+
+        />
 
 </androidx.cardview.widget.CardView>

@@ -65,6 +65,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 
             }
         });
+
+
         return courseViewHolder;
     }
 

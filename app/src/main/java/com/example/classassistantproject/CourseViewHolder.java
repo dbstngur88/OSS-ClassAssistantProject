@@ -2,6 +2,7 @@ package com.example.classassistantproject;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,19 @@ public class CourseViewHolder extends RecyclerView.ViewHolder {
     public CourseViewHolder(@NonNull View itemView) {
         super(itemView);
 
+
+        //course.xml에 view들 활성화
+        courseGradeTextView = itemView.findViewById(R.id.courseGrade);
+        courseTitleTextView = itemView.findViewById(R.id.courseTitle);
+        courseProfessorTextView = itemView.findViewById(R.id.courseProfessor);
+        courseCreditTextView = itemView.findViewById(R.id.courseCredit);
+        courseDivideTextView = itemView.findViewById(R.id.courseDivide);
+
+        coursePersonalTextView = itemView.findViewById(R.id.coursePersonal);
+        //courseRealPersonalTextView = itemView.findViewById(R.id.ed_insert_rpsl);
+        courseTimeTextView = itemView.findViewById(R.id.courseTime);
+        courseRoomTextView = itemView.findViewById(R.id.courseRoom);
+
         mView = itemView;
 
         //item click listener
@@ -48,18 +62,6 @@ public class CourseViewHolder extends RecyclerView.ViewHolder {
                 return true;
             }
         });
-
-        //course.xml에 view들 활성화
-        courseGradeTextView = itemView.findViewById(R.id.courseGrade);
-        courseTitleTextView = itemView.findViewById(R.id.courseTitle);
-        courseProfessorTextView = itemView.findViewById(R.id.courseProfessor);
-        courseCreditTextView = itemView.findViewById(R.id.courseCredit);
-        courseDivideTextView = itemView.findViewById(R.id.courseDivide);
-
-        coursePersonalTextView = itemView.findViewById(R.id.coursePersonal);
-        //courseRealPersonalTextView = itemView.findViewById(R.id.ed_insert_rpsl);
-        courseTimeTextView = itemView.findViewById(R.id.courseTime);
-        courseRoomTextView = itemView.findViewById(R.id.courseRoom);
     }
 
     //interface fo click listener

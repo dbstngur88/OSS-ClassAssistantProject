@@ -130,7 +130,7 @@ public class ClassActivity extends AppCompatActivity {
             switch(v.getId()){
                 case R.id.searchButton:
                     String getSubName = ((EditText)findViewById(R.id.majorText)).getText().toString();
-                    if(getSubName == ""){
+                    if(getSubName.length() == 0){
                         startToast("검색할 과목을 입력하세요.");
                     }else {
                         SearchWithSub();
@@ -138,13 +138,6 @@ public class ClassActivity extends AppCompatActivity {
                     break;
                 case R.id.addButton:
 
-                    String title = courseTitle.getText().toString().trim(); //교과목명
-                    String time = courseTime.getText().toString().trim(); //강의시간
-                    String professor = courseProfessor.getText().toString().trim(); //담당교수
-                    String room = courseRoom.getText().toString().trim(); //강의실
-
-                    //function call to upload data
-                    uploadData( time, title, professor, room);
                     break;
 
             }
