@@ -23,9 +23,9 @@
 
 
 ### 이영재
- 프로젝트내 모든 스타일 생성
- 각종 UI 담당
- 스플래시 화면인 Splash.java 구현
- 강의 목록띄우는 Course.java & CourseActivity.java 구현
- 추가한 강의 시간표에 불러오는 Lecture.java & LectureActivity.java 구현
+#### 프로젝트내 모든 스타일 생성
+#### 각종 UI 담당
+####스플래시 화면인 Splash.java 구현
+####강의 목록띄우는 Course.java & CourseActivity.java 구현
+####추가한 강의 시간표에 불러오는 Lecture.java & LectureActivity.java 구현
  
