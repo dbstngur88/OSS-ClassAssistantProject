@@ -100,23 +100,184 @@
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
             </LinearLayout>
-
-            <ListView
+            <TextView
                 android:id="@+id/noticeListView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:dividerHeight="10dp"
-                android:divider="#ffffff"/>
+                android:paddingTop="35dp"
+                android:text="팀소개"
+                android:textSize="40dp"
+                android:textColor="#FF6347"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:paddingTop="10dp"
+                android:text=" 팀구성 "
+                android:textSize="30dp"
+                android:textColor="#FF6347"
+                android:textStyle="bold"
+                android:background="@drawable/style_login"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#7FFFD4">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="팀장"
+                    android:textSize="25dp"
+                    android:textColor="#FF6347"
+                    android:textStyle="bold"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:background="@drawable/style_login"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="팀원"
+                    android:textSize="25dp"
+                    android:textColor="#FF6347"
+                    android:textStyle="bold"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:background="@drawable/style_login"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="팀원"
+                    android:textSize="25dp"
+                    android:textColor="#FF6347"
+                    android:textStyle="bold"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:background="@drawable/style_login"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="팀원"
+                    android:textSize="25dp"
+                    android:textColor="#FF6347"
+                    android:textStyle="bold"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:background="@drawable/style_login"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/cell_shape">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="윤수혁"
+                    android:textSize="20dp"
+                    android:textColor="#FF6347"
+                    android:textStyle="bold"
+                    android:layout_weight="4"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="박민석"
+                    android:textSize="20dp"
+                    android:textColor="#FF6347"
+                    android:textStyle="bold"
+                    android:layout_weight="4"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="윤동환"
+                    android:textSize="20dp"
+                    android:textColor="#FF6347"
+                    android:textStyle="bold"
+                    android:layout_weight="4"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="이영재"
+                    android:textSize="20dp"
+                    android:textColor="#FF6347"
+                    android:textStyle="bold"
+                    android:layout_weight="4"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:paddingTop="10dp"
+                android:text=" 간단한 어플 소개 "
+                android:textSize="30dp"
+                android:textColor="#FF6347"
+                android:textStyle="bold"
+                android:background="@drawable/style_login"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text=" 학생들이 수강하길 원하는 과목의 경쟁률과 수강 후기를 통해 \n 보다 만족스러운 수강신청을 가능하게 도와주어 \주는 어플."
+                android:textSize="20dp"
+                android:textColor="#FF6347"
+                android:textStyle="bold"
+                android:background="@drawable/cell_shape"/>
+
 
         </LinearLayout>
 
+        <Button
+            android:id="@+id/call_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:text=" 선문대학교 전화걸기   "
+            android:textSize="20dp"
+            android:textColor="#FF6347"
+            android:textStyle="bold"
+            android:drawableStart="@drawable/ic_baseline_phone_24"
+            android:drawableLeft="@drawable/ic_baseline_phone_24"
+            android:background="@drawable/style_button"/>
+<!-->
         <RelativeLayout
             android:id="@+id/fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </RelativeLayout>
+        </RelativeLayout><!-->
 
 
     </FrameLayout>
