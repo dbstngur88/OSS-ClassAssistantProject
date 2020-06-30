@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.EmailAuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
@@ -35,7 +36,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * created by donghwan from 2020.06.29...
@@ -55,11 +55,12 @@ public class ClassActivity extends AppCompatActivity {
     ProgressDialog pd;
     FirebaseUser mUser;   // 파이어베이스 user 확인할 변수
 
-    Button addButton;
     TextView courseTime;
     TextView courseTitle;
     TextView courseProfessor;
     TextView courseRoom;
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,7 +72,7 @@ public class ClassActivity extends AppCompatActivity {
         courseProfessor = findViewById(R.id.courseProfessor);
         courseRoom = findViewById(R.id.courseRoom);
 
-        mUser = FirebaseAuth.getInstance().getCurrentUser();
+        //mUser = FirebaseAuth.getInstance().getCurrentUser();
 
         //파이어베이스 초기화
         db = FirebaseFirestore.getInstance();
@@ -165,6 +166,7 @@ public class ClassActivity extends AppCompatActivity {
                     }
                 });
     }
+
     private void showData() {
 
         pd = new ProgressDialog(this);
@@ -175,31 +177,31 @@ public class ClassActivity extends AppCompatActivity {
         db.collection("elective")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                //called when data is retrived
-                  pd.dismiss();
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        //called when data is retrived
+                        pd.dismiss();
 
-                //show data
-                for (DocumentSnapshot doc : task.getResult()) {
-                    Course course = new Course (
-                        doc.getString("courseGrade"),
-                        doc.getString("courseTitle"),
-                        doc.getString("courseCredit"),
-                        doc.getString("courseDivide"),
-                        doc.getString("coursePersonal"),
-                        doc.getString("courseProfessor"),
-                        doc.getString("courseTime"),
-                        doc.getString("courseRoom"));
-                        dataList.add(course);
+                        //show data
+                        for (DocumentSnapshot doc : task.getResult()) {
+                            Course course = new Course (
+                                    doc.getString("courseGrade"),
+                                    doc.getString("courseTitle"),
+                                    doc.getString("courseCredit"),
+                                    doc.getString("courseDivide"),
+                                    doc.getString("coursePersonal"),
+                                    doc.getString("courseProfessor"),
+                                    doc.getString("courseTime"),
+                                    doc.getString("courseRoom"));
+                            dataList.add(course);
+                        }
+
+                        //adapter
+                        adapter = new CourseAdapter(ClassActivity.this, dataList, context);
+                        //set adapter to recyclerview
+                        mRecyclerView.setAdapter(adapter);
                     }
-
-                //adapter
-                adapter = new CourseAdapter(ClassActivity.this, dataList, context);
-                //set adapter to recyclerview
-                mRecyclerView.setAdapter(adapter);
-                }
-        })
+                })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
@@ -219,9 +221,6 @@ public class ClassActivity extends AppCompatActivity {
         pd.setTitle("등록중...");
         //show progress bar when user clike save button
         pd.show();
-        //random id for each data to be stored
-        String id = UUID.randomUUID().toString();
-
 
         final Map<String, Object> putMap = new HashMap<>();
         putMap.put("courseTime", time);
@@ -232,42 +231,49 @@ public class ClassActivity extends AppCompatActivity {
         //해당 유저 이메일 확인후 본인만의 myLecture 생성 후 강의 추가
         /**
          * 해당 로직 동작 방식
-         * 1. idToken 생성
-         * 2. idToken 생성완료 후 에'담긴강의' 컬렉션에 해당강의 담기
+         * 1. 사용자 프로필 Firestore에서 가져오기
+         * 2. 이메일을 참조
          * 3. 강의를 담을 때 '담긴강의' 컬렉션에서 겹치는 강의 여부 확인
          */
-        mUser.getIdToken(true)
-                .addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
-                    public void onComplete(@NonNull Task<GetTokenResult> task) {
-                        if (task.isSuccessful()) {
-                            String idToken = task.getResult().getToken();
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (mUser != null) {
+            final String email = mUser.getEmail();
 
-                            db.collection("장바구니").document("신청목록").collection(idToken).document(title)
-                                    .set(putMap);
+            mUser.getIdToken(true)
+                    .addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
+                        public void onComplete(@NonNull Task<GetTokenResult> task) {
+                            if (task.isSuccessful()) {
+                                String idToken = task.getResult().getToken();
 
-                            if(db.collection("장바구니").document("신청목록").collection(idToken).document(title) == null) {
-                                // 현재 id로 만들어진 document가 없을때
-                                db.collection("myLecture").document(idToken).set(putMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Toast.makeText(ClassActivity.this, "로딩 성공!", Toast.LENGTH_SHORT).show();
-                                    }
-                                })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Log.d("error", e.getMessage());
-                                                Toast.makeText(ClassActivity.this, "로딩 실패, 오류 발생", Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
-                            }else{
+                                //우선 과목을 장바구니에 담는다
+                                db.collection("장바구니").document("사용자리스트").collection(email).document(title).set(putMap);
 
+                                    //추가할 과목과 미리 담겨있는 괴목의 title 일치 여부 확인
+                               if (db.collection("장바구니").document("사용자리스트").collection(email).document(title) == null) {
+
+                                    //일치하지 않는다면 해당과목 myLecture에 저장
+                                    db.collection("myLecture").document(idToken).set(putMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Toast.makeText(ClassActivity.this, "로딩 성공!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.d("error", e.getMessage());
+                                                    Toast.makeText(ClassActivity.this, "로딩 실패, 오류 발생", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                } else {
+
+                                }
+                            } else {
+                                task.getException();
                             }
-                        } else {
-                            task.getException();
                         }
-                    }
-                });
+                    });
+        }
     }//updata()
 
     private void startToast(String msg){
