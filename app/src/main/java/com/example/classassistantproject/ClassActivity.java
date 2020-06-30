@@ -28,6 +28,7 @@ import com.google.firebase.auth.EmailAuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -215,7 +216,7 @@ public class ClassActivity extends AppCompatActivity {
     }//showdata()
 
     //파이어스토어에 강의정보를 올려주는 메소드
-    protected void uploadData(String time, final String title, String professor, String room) {
+    protected void uploadData(final String time, final String title, String professor, String room) {
 
         //set title of progress bar
         pd.setTitle("등록중...");
@@ -239,44 +240,36 @@ public class ClassActivity extends AppCompatActivity {
         if (mUser != null) {
             final String email = mUser.getEmail();
 
-            mUser.getIdToken(true)
-                    .addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
-                        public void onComplete(@NonNull Task<GetTokenResult> task) {
-                            if (task.isSuccessful()) {
-                                String idToken = task.getResult().getToken();
+                    //우선 과목을 장바구니에 담는다
+                    db.collection("장바구니").document("사용자리스트").collection(email).document(title).set(putMap);
 
-                                //우선 과목을 장바구니에 담는다
-                                db.collection("장바구니").document("사용자리스트").collection(email).document(title).set(putMap);
+                    DocumentReference doRef = db.collection("장바구니").document("사용자리스트")
+                            .collection(email).document(title);
 
-                                    //추가할 과목과 미리 담겨있는 괴목의 title 일치 여부 확인
-                               if (db.collection("장바구니").document("사용자리스트").collection(email).document(title) == null) {
-
-                                    //일치하지 않는다면 해당과목 myLecture에 저장
-                                    db.collection("myLecture").document(idToken).set(putMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void aVoid) {
-                                            Toast.makeText(ClassActivity.this, "로딩 성공!", Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Log.d("error", e.getMessage());
-                                                    Toast.makeText(ClassActivity.this, "로딩 실패, 오류 발생", Toast.LENGTH_SHORT).show();
-                                                }
-                                            });
-                                } else {
-
-                                }
-                            } else {
-                                task.getException();
+                    //추가할 과목과 미리 담겨있는 과목의 title 일치 여부 확인
+                    if (db.collection("장바구니").document("사용자리스트").collection(email).document(title) == doRef) {
+                        //일치하지 않는다면 해당과목 myLecture에 저장
+                        db.collection("myLecture").document("사용자리스트")
+                                .collection(email).document(title).set(putMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(ClassActivity.this, "담기 성공!",Toast.LENGTH_SHORT).show();
                             }
-                        }
-                    });
-        }
-    }//updata()
+                        })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.d("error", e.getMessage());
+                                        Toast.makeText(ClassActivity.this, "로딩 실패, 오류 발생", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    } else {
+                        // 일치한다
 
-    private void startToast(String msg){
-        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
-    }
+                    }
+                }
+            }
+//    private void startToast(String msg){
+//        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+//    }
 }

@@ -67,19 +67,15 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 
             }
 
-            @Override
-            public void onAddClick(View view, int position) {
-
-            }
-
             //@Override
-            public void onAddButtonClick(View view, int position) {
+            public void onAddClick(View view, int position) {
                 //사용자가 추가버튼을 누를 때 동작
 
                 String title = datalist.get(position).getCourseTitle(); //교과목명
                 String time = datalist.get(position).getCourseTime(); //강의시간
                 String professor = datalist.get(position).getCourseProfessor(); //담당교수
                 String room = datalist.get(position).getCourseRoom(); //강의실
+                classActivity.uploadData(time, title, professor, room);
             }
         });
         return courseViewHolder;

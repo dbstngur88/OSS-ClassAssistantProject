@@ -23,7 +23,7 @@ public class Lecture {
         }
     }
     public void addlecture(String lectureChoice){
-        //스케줄정보를담는 텍스트가 있을때 강의정보가 들어가는 배열에 넣기
+        //스케줄 정보를 담는 텍스트가 있을때 강의정보가 들어가는 배열에 넣기
         //수:[1][2] 금:[1][2] 이렇게 데이터가 있다고하면 lectureChoice를 통해  이 함수에 들어와서 파싱됨
         int tmp;
         if((tmp = lectureChoice.indexOf("월")) > -1){
