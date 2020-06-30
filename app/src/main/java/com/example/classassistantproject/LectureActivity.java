@@ -1,21 +1,24 @@
 package com.example.classassistantproject;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 public class LectureActivity extends AppCompatActivity {
 
@@ -129,16 +132,10 @@ public class LectureActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             //called when data is retrived
                             pd.dismiss();
-                            //Toast.makeText(LectureActivity.this, "읽어라 제발", Toast.LENGTH_SHORT).show();
+
                             //show data
                             for (DocumentSnapshot doc : task.getResult()) {
-
-                                //Toast.makeText(LectureActivity.this, "읽었니? 제발", Toast.LENGTH_SHORT).show();
-                                //doc.getString("courseTime");
-                                //doc.getString("courseTitle");
-                                //doc.getString("courseProfessor");
-                                //doc.getString("courseRoom");
-                                lecture.addlecture(doc.getString("courseTime"), doc.getString("courseTitle"), doc.getString("courseProfessor"), doc.getString("courseRoom"));
+                                lecture.addlecture(doc.getString("courseTime"), doc.getString("courseTitle"), doc.getString("courseProfessor"), doc.getString("CourseRoom"));
                                 lecture.setting(mon, tue, wed, thu, fri, LectureActivity.this);
                             }
 

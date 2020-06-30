@@ -20,7 +20,11 @@
                 android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:text="월"
                 android:layout_width="wrap_content"
@@ -86,7 +90,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/tuesday0"
                 android:layout_width="wrap_content"
@@ -95,7 +103,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/wednesday0"
                 android:layout_width="wrap_content"
@@ -104,7 +116,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/thursday0"
                 android:layout_width="wrap_content"
@@ -113,7 +129,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/friday0"
                 android:layout_width="wrap_content"
@@ -122,7 +142,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
         </TableRow>
 
         <TableRow
@@ -147,7 +171,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/tuesday1"
                 android:layout_width="wrap_content"
@@ -156,7 +184,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/wednesday1"
                 android:layout_width="wrap_content"
@@ -165,7 +197,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/thursday1"
                 android:layout_width="wrap_content"
@@ -174,7 +210,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/friday1"
                 android:layout_width="wrap_content"
@@ -183,7 +223,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
         </TableRow>
 
         <TableRow
@@ -208,7 +252,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/tuesday2"
                 android:layout_width="wrap_content"
@@ -217,7 +265,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/wednesday2"
                 android:layout_width="wrap_content"
@@ -226,7 +278,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/thursday2"
                 android:layout_width="wrap_content"
@@ -235,7 +291,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/friday2"
                 android:layout_width="wrap_content"
@@ -244,7 +304,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
         </TableRow>
 
         <TableRow
@@ -269,7 +333,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/tuesday3"
                 android:layout_width="wrap_content"
@@ -278,7 +346,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/wednesday3"
                 android:layout_width="wrap_content"
@@ -287,7 +359,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/thursday3"
                 android:layout_width="wrap_content"
@@ -296,7 +372,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/friday3"
                 android:layout_width="wrap_content"
@@ -305,7 +385,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
         </TableRow>
 
         <TableRow
@@ -330,7 +414,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/tuesday4"
                 android:layout_width="wrap_content"
@@ -339,7 +427,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/wednesday4"
                 android:layout_width="wrap_content"
@@ -348,7 +440,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/thursday4"
                 android:layout_width="wrap_content"
@@ -357,7 +453,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/friday4"
                 android:layout_width="wrap_content"
@@ -366,7 +466,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
         </TableRow>
 
         <TableRow
@@ -391,7 +495,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/tuesday5"
                 android:layout_width="wrap_content"
@@ -400,7 +508,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/wednesday5"
                 android:layout_width="wrap_content"
@@ -409,7 +521,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/thursday5"
                 android:layout_width="wrap_content"
@@ -418,7 +534,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/friday5"
                 android:layout_width="wrap_content"
@@ -427,7 +547,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
         </TableRow>
 
         <TableRow
@@ -444,7 +568,7 @@
                 android:gravity="center"
                 android:text="14:30~"
                 android:textColor="#FF6347"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/monday6"
@@ -454,7 +578,11 @@
                 android:background="@drawable/cell_shape"
                 android:gravity="center"
                 android:textColor="#FF6347"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
 
             <TextView
                 android:id="@+id/tuesday6"
@@ -464,7 +592,11 @@
                 android:background="@drawable/cell_shape"
                 android:gravity="center"
                 android:textColor="#FF6347"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
 
             <TextView
                 android:id="@+id/wednesday6"
@@ -474,7 +606,11 @@
                 android:background="@drawable/cell_shape"
                 android:gravity="center"
                 android:textColor="#FF6347"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
 
             <TextView
                 android:id="@+id/thursday6"
@@ -484,7 +620,11 @@
                 android:background="@drawable/cell_shape"
                 android:gravity="center"
                 android:textColor="#FF6347"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
 
             <TextView
                 android:id="@+id/friday6"
@@ -494,7 +634,11 @@
                 android:background="@drawable/cell_shape"
                 android:gravity="center"
                 android:textColor="#FF6347"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
         </TableRow>
 
         <TableRow
@@ -519,7 +663,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/tuesday7"
                 android:layout_width="wrap_content"
@@ -528,7 +676,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/wednesday7"
                 android:layout_width="wrap_content"
@@ -537,7 +689,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/thursday7"
                 android:layout_width="wrap_content"
@@ -546,7 +702,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/friday7"
                 android:layout_width="wrap_content"
@@ -555,7 +715,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
         </TableRow>
 
         <TableRow
@@ -580,7 +744,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/tuesday8"
                 android:layout_width="wrap_content"
@@ -589,7 +757,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/wednesday8"
                 android:layout_width="wrap_content"
@@ -598,7 +770,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/thursday8"
                 android:layout_width="wrap_content"
@@ -607,7 +783,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/friday8"
                 android:layout_width="wrap_content"
@@ -616,7 +796,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
         </TableRow>
 
         <TableRow
@@ -641,7 +825,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/tuesday9"
                 android:layout_width="wrap_content"
@@ -650,7 +838,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/wednesday9"
                 android:layout_width="wrap_content"
@@ -659,7 +851,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/thursday9"
                 android:layout_width="wrap_content"
@@ -668,7 +864,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="9sp"
+                android:autoSizeStepGranularity="2sp"/>
             <TextView
                 android:id="@+id/friday9"
                 android:layout_width="wrap_content"
@@ -677,7 +877,11 @@
                 android:gravity="center"
                 android:textColor="#FF6347"
                 android:textStyle="bold"
-                android:background="@drawable/cell_shape"/>
+                android:background="@drawable/cell_shape"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="10sp"
+                android:autoSizeStepGranularity="1sp"/>
         </TableRow>
 
     </TableLayout>
