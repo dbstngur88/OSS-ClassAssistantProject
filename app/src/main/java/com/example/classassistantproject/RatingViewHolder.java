@@ -32,8 +32,6 @@ public class RatingViewHolder extends RecyclerView.ViewHolder {
                 return true;
             }
         });
-        CourseTitle1 = view.findViewById(R.id.CourseTitle1);
-        CourseProfessor1 = view.findViewById(R.id.CourseProfessor1);
         CourseTitleTextView = itemView.findViewById(R.id.CourseTitle);
         CourseProfessorTextView = itemView.findViewById(R.id.CourseProfessor);
     }

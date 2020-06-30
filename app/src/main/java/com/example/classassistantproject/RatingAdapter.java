@@ -47,8 +47,6 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingViewHolder> {
 
                 TextView CourseTitleTextView = view.findViewById(R.id.CourseTitle);
                 TextView CourseProfessorTextView = view.findViewById(R.id.CourseProfessor);
-                TextView CourseTitle1 = view.findViewById(R.id.CourseTitle1);
-                TextView CourseProfessor1 = view.findViewById(R.id.CourseProfessor1);
 
                 String title1 = ratingList.get(position).getCourseTitle();
                 String professor1 = ratingList.get(position).getCourseProfessor();
