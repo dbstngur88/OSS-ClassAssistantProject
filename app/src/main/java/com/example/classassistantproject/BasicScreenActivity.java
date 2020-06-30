@@ -3,14 +3,18 @@ package com.example.classassistantproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class BasicScreenActivity extends AppCompatActivity {
 
+    Button call_btn;
+    Intent call_intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,7 @@ public class BasicScreenActivity extends AppCompatActivity {
         findViewById(R.id.statisticsButton).setOnClickListener(onClickListener);
         findViewById(R.id.txt_insert_info).setOnClickListener(onClickListener);
 
+        findViewById(R.id.call_btn).setOnClickListener(onClickListener);
 
         if(FirebaseAuth.getInstance().getCurrentUser() == null){
             //현재유저가 null이면 - 로그인이 안됐을때.
@@ -63,6 +68,14 @@ public class BasicScreenActivity extends AppCompatActivity {
                 case R.id.txt_insert_info:
                     intent = new Intent(BasicScreenActivity.this, InsertInfoActivity.class);
                     startActivity(intent);
+                    break;
+
+                case R.id.call_btn:
+                    call_intent = new Intent(Intent.ACTION_DIAL);
+                    call_intent.setData(Uri.parse("tel:" + "041-530-2114"));
+                    if (call_intent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(call_intent);
+                    }
                     break;
             }
         }

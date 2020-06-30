@@ -81,8 +81,17 @@ public class LectureActivity extends AppCompatActivity {
         String title = "컴퓨터 네트워크";
         String professor = "김봉재";
         String room = "인문405";
+        if(lecture.validate(time)) {
+            lecture.addlecture(time, title, professor, room);
+        }
 
-        lecture.addlecture(time, title, professor, room);
+        String time2 = "월:[1][2]수:[1]";
+        String title2 = "오픈소스";
+        String professor2 = "김봉재";
+        String room2 = "인문409";
+        if(lecture.validate(time2)) {
+            lecture.addlecture(time2, title2, professor2, room2);
+        }
         lecture.setting(mon,tue,wed,thu,fri,this);
 
 
