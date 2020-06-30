@@ -15,7 +15,9 @@
 ### 기여 내용
 ## 윤수혁
 경쟁률 기능 구현 및 경쟁률 데이터 입력 기능 구현, 그 외 진행사항 중 오류 발생 시 오류 수정
+
 *구현한 클래스*
+
 1. CompetSubSchActivity
 파이어스토어 내 데이터를 검색, 일치하는 데이터 확인 및 출력하는 기능 구현
 필드 값(과목명, 교수명, 수강인원, 신청희망 인원)을 과목 명 및 교수 명으로 검색, 일치하는 테이블로 가져와
@@ -82,8 +84,12 @@ Firebase Firestore test-version을 이용
 
 ## 이영재
 프로젝트내 모든 스타일 생성
+
 각종 UI 담당
+
 스플래시 화면인 Splash.java 구현
+
 강의 목록띄우는 Course.java & CourseActivity.java 구현
+
 추가한 강의 시간표에 불러오는 Lecture.java & LectureActivity.java 구현
            
